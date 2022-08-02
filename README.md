@@ -1,0 +1,11 @@
+
+- https://drafts.fxtf.org
+- https://drafts.csswg.org
+- https://wicg.io
+- https://drafts.css-houdini.org
+- https://www.w3.org/TR/
+- https://github.com/MicrosoftEdge/MSEdgeExplainers
+- https://github.com/tabatkins/specs
+- https://github.com/TC39/proposals
+- https://drafts.csswg.org/indexes/
+- https://svgwg.org

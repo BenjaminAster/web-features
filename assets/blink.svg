@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="31 31 450 450">
+	<defs>
+		<clipPath id="a" clipPathUnits="userSpaceOnUse">
+			<path fill="#f9f9f9" stroke-width="0" d="M256 45A211 211 0 0 0 45 256a211 211 0 0 0 211 211 211 211 0 0 0 211-211A211 211 0 0 0 256 45Zm0 112a99 99 0 0 1 99 99 99 99 0 0 1-99 99 99 99 0 0 1-99-99 99 99 0 0 1 99-99Z"/>
+		</clipPath>
+	</defs>
+	<path fill="#91b0e8" d="M455 152c-315 251-157 126 0 0zm0 0H273a106 106 0 0 1 62 174l-90 155h11a225 225 0 0 0 199-329z"/>
+	<path fill="#396bd7" d="M256 31c-81 0-152 43-191 107l87 138-2-20a106 106 0 0 1 128-104h177A225 225 0 0 0 256 31ZM65 138c-55 261-28 130 0 0z"/>
+	<path fill="#6199f6" d="M65 138a225 225 0 0 0 180 343l90-155a106 106 0 0 1-183-50Z"/>
+	<circle cx="256" cy="256" r="105.7" fill="#fff"/>
+	<circle cx="256" cy="256" r="87.2" fill="#4688f4"/>
+	<path fill="#367100" d="m77 145 82 130 31-35zm366 13-166 1 16 38 150-39zM275 309l-30 157 85-144z" clip-path="url(#a)" opacity=".1" transform="translate(-17 -17) scale(1.0677)"/>
+</svg>

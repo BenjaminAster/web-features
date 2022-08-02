@@ -1,0 +1,165 @@
+
+:root {
+	scrollbar-color: #8886 transparent;
+
+	-moz-text-size-adjust: none;
+	-webkit-text-size-adjust: none;
+	text-size-adjust: none;
+}
+
+body {
+	font-family: system-ui, sans-serif;
+	margin: 0;
+	padding: .5rem;
+}
+
+header {
+	display: flex;
+	flex-direction: column;
+	gap: .5rem;
+}
+
+.info details {
+	border-radius: .4rem;
+	border: 1px solid #8887;
+}
+
+.info details > * {
+	padding: .4rem .6rem;
+}
+
+.info details > summary h2 {
+	font-size: 1rem;
+	font-weight: 500;
+	display: inline;
+}
+
+.info details > :not(summary) {
+	padding-block-start: .1rem;
+}
+
+.features {
+	display: flex;
+	flex-direction: column;
+	gap: .5rem;
+	margin-block-start: 1rem;
+}
+
+.features > li {
+	display: flex;
+	flex-direction: column;
+	gap: .5rem;
+	padding: .5rem;
+	background-color: #8882;
+	border-radius: .5rem;
+}
+
+.features > li > ul {
+	display: flex;
+	gap: .5rem;
+	flex-wrap: wrap;
+}
+
+.features > li > ul > li {
+	padding: .5em .7em;
+	border-radius: .4rem;
+	background-color: #8883;
+	display: flex;
+	align-items: center;
+	word-break: break-word;
+}
+
+.features > li > ul > li a {
+	color: inherit;
+}
+
+.features > li > ul > li a:not(:hover) {
+	text-decoration: none;
+}
+
+.features > li > ul > li > .engines {
+	display: flex;
+	gap: .4rem;
+}
+
+.features > li > ul > li > .engines:not(:empty) {
+	margin-inline-start: .6rem;
+}
+
+.engine {
+	inline-size: 1.5rem;
+	aspect-ratio: 1;
+	background-image: var(--image);
+	background-position: center center;
+	background-size: contain;
+	background-repeat: no-repeat;
+}
+
+.engine.blink {
+	--image: url("./assets/blink.svg");
+}
+
+.engine.webkit {
+	--image: url("./assets/webkit.svg");
+}
+
+.engine.gecko {
+	--image: url("./assets/gecko.svg");
+}
+
+.engine.experimental {
+	--stripes-width: calc(3 * (1rem / 16));
+	--mask-image: repeating-linear-gradient(-45deg, #fff4 0 var(--stripes-width), #ffff var(--stripes-width) calc(var(--stripes-width) * 2));
+	-webkit-mask-image: var(--mask-image);
+	mask-image: var(--mask-image);
+}
+
+ul {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	font-weight: 600;
+	padding-inline: .05em;
+}
+
+p, h1, h2, h3, h4, h5, h6 {
+	margin-block: 0;
+}
+
+details > summary {
+	position: relative;
+	cursor: pointer;
+}
+
+details > summary::marker, details > summary::-webkit-details-marker {
+	color: transparent;
+}
+
+details > summary::before {
+	content: "▶\FE0E";
+	/* content: ""; */
+	position: absolute;
+	/* border-style: solid; */
+	/* border-color: transparent; */
+	/* --size: .4rem; */
+	/* border-block-width: var(--size); */
+	/* border-inline-start-width: calc(var(--size) * sqrt(3)); */
+	/* border-inline-start-color: currentColor; */
+	/* inset-inline-start: .6em; */
+	/* inset-block-start: .6em; */
+	inset-inline-start: .6em;
+	transition: rotate .2s;
+}
+
+/* @supports not (aspect-ratio: calc(sqrt(3))) {
+	details > summary::before {
+		border-inline-start-width: calc(var(--size) * 1.73);
+	}
+} */
+
+details[open] > summary::before {
+	rotate: 100grad;
+}

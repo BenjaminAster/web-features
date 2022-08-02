@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<meta name="color-scheme" content="dark light" />
+	<meta name="robots" content="all" />
+	<meta name="description" content="An overview of (mostly new) web features that are not yet fully supported in all three browser engines." />
+
+	<title>Web features</title>
+
+	<link rel="icon" href="./assets/icon.svg" />
+
+	<link rel="stylesheet" href="./main.css" />
+</head>
+
+<body>
+	<template id="item">
+		<li>
+			<a href="" class="name"></a>
+			<div class="engines"></div>
+		</li>
+	</template>
+
+	<template id="engine">
+		<div class="engine"></div>
+	</template>
+
+	<header aria-label="information" class="info">
+		<h1>Web features</h1>
+
+		<details>
+			<summary>
+				<h2>Expand for more info</h2>
+			</summary>
+			<div>
+				<p>
+					This site provides an overview of all web features that I could find which are not yet fully supported in all three browser engines.
+					These range from features already implemented in two browser engines up to unofficial drafts and even just proposals.
+					The three browser engines are:
+				</p>
+
+				<table>
+					<thead>
+						<tr>
+							<td>Browser engine</td>
+							<td>Logo</td>
+							<td>Associated browser</td>
+							<td>Company</td>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>Blink</td>
+							<td><img src="./assets/blink.svg" alt="logo of Blink (actually the Chromium logo because Blink doesn't have its own logo)"></td>
+							<td>Chromium</td>
+							<td>Google</td>
+						</tr>
+						<tr>
+							<td>WebKit</td>
+							<td><img src="./assets/webkit.svg" alt="logo of WebKit"></td>
+							<td>Safari</td>
+							<td>Apple</td>
+						</tr>
+						<tr>
+							<td>Gecko</td>
+							<td><img src="./assets/gecko.svg" alt="logo of Gecko"></td>
+							<td>Firefox</td>
+							<td>Mozilla</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</details>
+	</header>
+
+	<main aria-label="features">
+		<ul class="features">
+			<li>
+				<h2>HTML</h2>
+				<ul id="html"></ul>
+			</li>
+			<li>
+				<h2>CSS</h2>
+				<ul id="css"></ul>
+			</li>
+			<li>
+				<h2>JavaScript</h2>
+				<ul id="javascript"></ul>
+			</li>
+		</ul>
+	</main>
+</body>
+
+</html>
