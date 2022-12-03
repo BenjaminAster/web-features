@@ -9,3 +9,6 @@
 - https://github.com/TC39/proposals
 - https://drafts.csswg.org/indexes/
 - https://svgwg.org
+- https://open-ui.org
+- https://github.com/orgs/webmachinelearning/repositories
+- https://github.com/orgs/immersive-web/repositories
