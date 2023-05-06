@@ -25,18 +25,27 @@ header {
 	gap: .5rem;
 }
 
+img {
+	display: block;
+}
+
 .info .details {
-	border-radius: .4rem;
-	border: 1px solid #8887;
+	border-radius: .5rem;
+	background-color: #8881;
+	background-clip: padding-box;
+	border: 1px solid #8884;
 }
 
 .info .details > input[type=checkbox]#info-details {
 	position: absolute;
 	appearance: none;
+	opacity: 0;
 }
 
 .info .details > .summary {
-	display: block;
+	display: flex;
+	align-items: center;
+	gap: .4em;
 	padding: .4rem .6rem;
 	cursor: pointer;
 }
@@ -49,13 +58,13 @@ header {
 	font-size: 1rem;
 	font-weight: 500;
 	display: inline;
-	margin-inline-start: 1.2rem;
 }
 
 .info .details > .summary::before {
-	content: "▶\FE0E";
+	content: "";
 	transition: rotate .2s;
-	position: absolute;
+	border-inline-start: .7em solid currentColor;
+	border-block: .4em solid transparent;
 }
 
 .info .details > input[type=checkbox]#info-details:checked ~ .summary::before {
@@ -64,17 +73,60 @@ header {
 
 .info .details > .expansion {
 	padding-inline: .6rem;
+	box-sizing: border-box;
 	display: grid;
 	grid-template-rows: 0fr;
 	transition: grid-template-rows .2s;
 }
 
 .info .details > .expansion > div {
+	box-sizing: border-box;
 	overflow: hidden;
+}
+
+.info .details > .expansion > div > :last-child {
+	margin-block-end: .6rem;
 }
 
 .info .details > input[type=checkbox]#info-details:checked ~ .expansion {
 	grid-template-rows: 1fr;
+}
+
+.engines-table {
+	margin-block-start: .6rem;
+	border-spacing: 0;
+	background-color: #8886;
+}
+
+.engines-table > thead::after {
+	content: "";
+	block-size: 1px;
+	display: block;
+}
+
+.engines-table > * > tr {
+	background-color: Canvas;
+}
+
+.engines-table > * > tr > td {
+	background-clip: padding-box;
+}
+
+.engines-table > * > tr > td {
+	padding: .4em .6em;
+	background-color: #8883;
+}
+
+.engines-table > tbody > tr:nth-of-type(odd) > td {
+	background-color: #8882;
+}
+
+.engines-table > * > tr > td:not(:last-of-type) {
+	border-inline-end: 1px solid transparent;
+}
+
+.engines-table img.engine {
+	block-size: 2.5rem;
 }
 
 .features {
@@ -89,7 +141,9 @@ header {
 	flex-direction: column;
 	gap: .5rem;
 	padding: .5rem;
-	background-color: #8882;
+	background-color: #8881;
+	background-clip: padding-box;
+	border: 1px solid #8884;
 	border-radius: .5rem;
 }
 
@@ -102,7 +156,9 @@ header {
 .features > li > ul > li {
 	padding: .5em .7em;
 	border-radius: .4rem;
-	background-color: #8883;
+	background-color: #8882;
+	background-clip: padding-box;
+	border: 1px solid #8884;
 	display: flex;
 	align-items: center;
 	word-break: break-word;
@@ -125,7 +181,7 @@ header {
 	margin-inline-start: .6rem;
 }
 
-.engine {
+.engines > .engine {
 	inline-size: 1.5rem;
 	aspect-ratio: 1;
 	background-image: var(--image);
@@ -135,26 +191,26 @@ header {
 	position: relative;
 }
 
-.engine.blink {
+.engines > .engine.blink {
 	--image: url("./assets/blink.svg");
 }
 
-.engine.webkit {
+.engines > .engine.webkit {
 	--image: url("./assets/webkit.svg");
 }
 
-.engine.gecko {
+.engines > .engine.gecko {
 	--image: url("./assets/gecko.svg");
 }
 
-.engine.experimental {
+.engines > .engine.experimental {
 	--stripes-width: calc(2 * var(--sqrt-2) * (1rem / 16));
 	--mask-image: repeating-linear-gradient(-45deg, #fff4 0 var(--stripes-width), #ffff var(--stripes-width) calc(var(--stripes-width) * 2));
 	-webkit-mask-image: var(--mask-image);
 	mask-image: var(--mask-image);
 }
 
-.engine.prefixed::after {
+.engines > .engine.prefixed::after {
 	content: "-x-";
 	color: white;
 	background-color: firebrick;
