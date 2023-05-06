@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, interactive-widget=resizes-content" />
+	<meta name="color-scheme" content="dark light" />
+	<meta name="robots" content="all" />
+	<meta name="author" content="Benjamin Aster" />
+	<meta name="description" content="DESCRIPTION" />
+	<!-- <meta name="repository" content="https://github.com/BenjaminAster/REPOSITORY" /> -->
+	<!-- <meta property="og:image" content="https://benjaminaster.com/NAME/assets/icon.png" /> -->
+
+	<!-- <link rel="icon" href="./assets/icon.png" type="image/png" sizes="512x512" /> -->
+	<!-- <link rel="icon" href="./assets/icon.svg" type="image/svg+xml" sizes="any" /> -->
+	<!-- <link rel="manifest" href="./app.webmanifest" /> -->
+
+	<title>CSS Properties</title>
+
+	<!-- <link rel="stylesheet" href="./main.css" /> -->
+	<link rel="preload" as="fetch" crossorigin href="https://w3c.github.io/csswg-drafts/indexes/" />
+
+	<script type="module">
+		let /** @type {string[]} */ browserProperties = [];
+		let /** @type {string[]} */ speccedProperties = [];
+		let /** @type {Set<string>} */ allProperties = new Set();
+
+		{
+			for (let property in document.body.style) {
+				if (typeof document.body.style[property] !== "string") continue;
+				property = property.replaceAll(/(?<capital>[A-Z])/g, "-$<capital>").replace(/^(?<vendorPrefix>webkit-|moz-|epub-)/, "-$<vendorPrefix>").toLowerCase();
+				browserProperties.push(property);
+				allProperties.add(property);
+			}
+		}
+
+		{
+			const indexesURL = "https://w3c.github.io/csswg-drafts/indexes/";
+			const doc = new DOMParser().parseFromString(await (await window.fetch(indexesURL)).text(), "text/html");
+			for (const element of doc.querySelectorAll("#properties + div .index > li")) {
+				const property = element.firstChild.textContent.trim();
+				if (property.startsWith("--") || element.firstChild.href?.match(/#descdef-/)) continue;
+				speccedProperties.push(property);
+				allProperties.add(property);
+			}
+		}
+
+		{
+			const tbody = document.querySelector("table#properties > tbody")
+			const fragment = tbody.querySelector(":scope > template").content;
+			for (const property of [...allProperties].sort()) {
+				const clone = fragment.cloneNode(true);
+				if (browserProperties.includes(property)) clone.querySelector(".browser").textContent = property;
+				if (speccedProperties.includes(property)) clone.querySelector(".specced").textContent = property;
+				tbody.append(clone);
+			}
+		}
+	</script>
+
+	<style>
+		:root {
+			font-family: system-ui, sans-serif;
+			-webkit-text-size-adjust: none;
+			text-size-adjust: none;
+		}
+
+		body {
+			box-sizing: border-box;
+			min-block-size: 100vh;
+			min-block-size: 100dvb;
+			margin: 0;
+			padding: .5rem;
+		}
+
+		table {
+			border-collapse: collapse;
+		}
+
+		tr > td {
+			border: 1px solid currentColor;
+			padding: .3em .5em;
+		}
+	</style>
+</head>
+
+<body>
+	<noscript>
+		Please enable JavaScript to view this site.
+		<hr />
+	</noscript>
+
+	<table id="properties">
+		<thead>
+			<tr>
+				<td>In a specification:</td>
+				<td>Your browser supports:</td>
+			</tr>
+		</thead>
+		<tbody>
+			<template>
+				<tr>
+					<td class="specced"></td>
+					<td class="browser"></td>
+				</tr>
+			</template>
+		</tbody>
+	</table>
+</body>
+
+</html>

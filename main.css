@@ -2,13 +2,19 @@
 :root {
 	scrollbar-color: #8886 transparent;
 
-	-moz-text-size-adjust: none;
+	font-family: system-ui, sans-serif;
 	-webkit-text-size-adjust: none;
 	text-size-adjust: none;
+	--sqrt-2: 1.414213562373;
+}
+
+@media (hover: none) {
+	button, label, summary {
+		-webkit-tap-highlight-color: transparent;
+	}
 }
 
 body {
-	font-family: system-ui, sans-serif;
 	margin: 0;
 	padding: .5rem;
 }
@@ -19,23 +25,56 @@ header {
 	gap: .5rem;
 }
 
-.info details {
+.info .details {
 	border-radius: .4rem;
 	border: 1px solid #8887;
 }
 
-.info details > * {
-	padding: .4rem .6rem;
+.info .details > input[type=checkbox]#info-details {
+	position: absolute;
+	appearance: none;
 }
 
-.info details > summary h2 {
+.info .details > .summary {
+	display: block;
+	padding: .4rem .6rem;
+	cursor: pointer;
+}
+
+.info .details > input[type=checkbox]#info-details:focus-visible ~ .summary {
+	outline: 1px solid;
+}
+
+.info .details > .summary h2 {
 	font-size: 1rem;
 	font-weight: 500;
 	display: inline;
+	margin-inline-start: 1.2rem;
 }
 
-.info details > :not(summary) {
-	padding-block-start: .1rem;
+.info .details > .summary::before {
+	content: "▶\FE0E";
+	transition: rotate .2s;
+	position: absolute;
+}
+
+.info .details > input[type=checkbox]#info-details:checked ~ .summary::before {
+	rotate: 100grad;
+}
+
+.info .details > .expansion {
+	padding-inline: .6rem;
+	display: grid;
+	grid-template-rows: 0fr;
+	transition: grid-template-rows .2s;
+}
+
+.info .details > .expansion > div {
+	overflow: hidden;
+}
+
+.info .details > input[type=checkbox]#info-details:checked ~ .expansion {
+	grid-template-rows: 1fr;
 }
 
 .features {
@@ -93,6 +132,7 @@ header {
 	background-position: center center;
 	background-size: contain;
 	background-repeat: no-repeat;
+	position: relative;
 }
 
 .engine.blink {
@@ -108,10 +148,24 @@ header {
 }
 
 .engine.experimental {
-	--stripes-width: calc(3 * (1rem / 16));
+	--stripes-width: calc(2 * var(--sqrt-2) * (1rem / 16));
 	--mask-image: repeating-linear-gradient(-45deg, #fff4 0 var(--stripes-width), #ffff var(--stripes-width) calc(var(--stripes-width) * 2));
 	-webkit-mask-image: var(--mask-image);
 	mask-image: var(--mask-image);
+}
+
+.engine.prefixed::after {
+	content: "-x-";
+	color: white;
+	background-color: firebrick;
+	padding-inline: .2em;
+	inset-block-end: -.2em;
+	inset-inline: 0;
+	margin-inline: auto;
+	inline-size: fit-content;
+	border-radius: .3em;
+	position: absolute;
+	font-size: .6em;
 }
 
 ul {
@@ -127,39 +181,4 @@ h1, h2, h3, h4, h5, h6 {
 
 p, h1, h2, h3, h4, h5, h6 {
 	margin-block: 0;
-}
-
-details > summary {
-	position: relative;
-	cursor: pointer;
-}
-
-details > summary::marker, details > summary::-webkit-details-marker {
-	color: transparent;
-}
-
-details > summary::before {
-	content: "▶\FE0E";
-	/* content: ""; */
-	position: absolute;
-	/* border-style: solid; */
-	/* border-color: transparent; */
-	/* --size: .4rem; */
-	/* border-block-width: var(--size); */
-	/* border-inline-start-width: calc(var(--size) * sqrt(3)); */
-	/* border-inline-start-color: currentColor; */
-	/* inset-inline-start: .6em; */
-	/* inset-block-start: .6em; */
-	inset-inline-start: .6em;
-	transition: rotate .2s;
-}
-
-/* @supports not (aspect-ratio: calc(sqrt(3))) {
-	details > summary::before {
-		border-inline-start-width: calc(var(--size) * 1.73);
-	}
-} */
-
-details[open] > summary::before {
-	rotate: 100grad;
 }

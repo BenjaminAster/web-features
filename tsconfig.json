@@ -2,6 +2,9 @@
 	"compilerOptions": {
 		"module": "ESNext",
 		"target": "ESNext",
+		"allowImportingTsExtensions": true,
+		"noEmit": true,
+		"types": ["better-typescript", "deno-types"],
 		"strict": false,
 	}
 }
