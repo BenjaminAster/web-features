@@ -156,9 +156,9 @@ img {
 .features > li > ul > li {
 	padding: .5em .7em;
 	border-radius: .4rem;
-	background-color: #8882;
+	background-color: #aaa2;
 	background-clip: padding-box;
-	border: 1px solid #8884;
+	border: 1px solid #aaa4;
 	display: flex;
 	align-items: center;
 	word-break: break-word;
