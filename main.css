@@ -1,17 +1,12 @@
 
 :root {
-	scrollbar-color: #8886 transparent;
-
 	font-family: system-ui, sans-serif;
+	-webkit-tap-highlight-color: transparent;
 	-webkit-text-size-adjust: none;
 	text-size-adjust: none;
-	--sqrt-2: 1.414213562373;
-}
+	scrollbar-color: #8886 transparent;
 
-@media (hover: none) {
-	button, label, summary {
-		-webkit-tap-highlight-color: transparent;
-	}
+	--sqrt-2: 1.414213562373;
 }
 
 body {
