@@ -2,7 +2,6 @@
 <html lang="en"><head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta name="color-scheme" content="dark light">
 	<meta name="robots" content="all">
 	<meta name="description" content="An overview of (mostly new) web features that are not yet fully supported in all three browser engines.">
 	<meta name="repository" content="https://github.com/BenjaminAster/web-features">
@@ -12,6 +11,10 @@
 	<link rel="icon" href="./assets/icon.svg">
 
 	<link rel="stylesheet" href="./main.css">
+
+	<link rel="preload" as="image" href="./assets/blink.svg">
+	<link rel="preload" as="image" href="./assets/gecko.svg">
+	<link rel="preload" as="image" href="./assets/webkit.svg">
 </head>
 
 <body>
@@ -39,7 +42,7 @@
 			<div class="expansion">
 				<div>
 					<p>
-						This site provides an overview of many web features that are not yet fully supported in all three major browser engines.
+						This site provides an overview of many web features that are not yet fully supported (unprefixed) in all three major browser engines.
 						These range from features already implemented in two browser engines up to unofficial drafts and even just proposals.
 						The three major browser engines are:
 					</p>
@@ -57,7 +60,7 @@
 							<tr>
 								<td><img class="engine" src="./assets/blink.svg" alt="logo of Blink (actually the Chromium logo because Blink doesn't have its own logo)"></td>
 								<td>Blink</td>
-								<td>Chromium</td>
+								<td>Chrome/Chromium</td>
 								<td>Google</td>
 							</tr>
 							<tr>
@@ -71,6 +74,68 @@
 								<td>Gecko</td>
 								<td>Firefox</td>
 								<td>Mozilla</td>
+							</tr>
+						</tbody>
+					</table>
+
+					<h3>Legend</h3>
+
+					<table>
+						<thead>
+							<tr>
+								<td>Icon</td>
+								<td>Description</td>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>
+									<div class="engines">
+										<div class="engine blink"></div>
+										<div class="engine webkit"></div>
+										<div class="engine gecko"></div>
+									</div>
+								</td>
+								<td>
+									The feature is supported in the current stable version of the associated browser.
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<div class="engines">
+										<div class="engine blink experimental"></div>
+										<div class="engine webkit experimental"></div>
+										<div class="engine gecko experimental"></div>
+									</div>
+								</td>
+								<td>
+									The feature is experimentally supported in a developer preview version of the associated browser.
+									A special flag might need to be enabled.
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<div class="engines">
+										<div class="engine blink prefixed"></div>
+										<div class="engine webkit prefixed"></div>
+										<div class="engine gecko prefixed"></div>
+									</div>
+								</td>
+								<td>
+									The feature uses a non-standard, vendor-prefixed name.
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<div class="engines">
+										<div class="engine blink limited-support"></div>
+										<div class="engine webkit limited-support"></div>
+										<div class="engine gecko limited-support"></div>
+									</div>
+								</td>
+								<td>
+									The feature has limited support (e.g. not available on all platforms)
+								</td>
 							</tr>
 						</tbody>
 					</table>
@@ -90,11 +155,13 @@
 		<div class="engine blink" title="Supported in Blink"></div>
 	
 		<div class="engine webkit experimental" title="Supported in WebKit (experimental)"></div>
+	
+		<div class="engine gecko experimental" title="Supported in Gecko (experimental)"></div>
 	</div>
 		</li>
 	
 		<li>
-			<a href="https://open-ui.org/prototypes/selectmenu" class="name">&lt;selectmenu&gt;</a>
+			<a href="https://open-ui.org/components/selectmenu/" class="name">&lt;selectmenu&gt;</a>
 			<div class="engines">
 		<div class="engine blink experimental" title="Supported in Blink (experimental)"></div>
 	</div>
@@ -172,7 +239,7 @@
 		</li>
 	
 		<li>
-			<a href="https://www.spiedigitallibrary.org/conference-proceedings-of-spie/11137/111370K/JPEG-XL-next-generation-image-compression-architecture-and-coding-tools/10.1117/12.2529237.full" class="name">JPEG XL images</a>
+			<a href="https://arxiv.org/ftp/arxiv/papers/1908/1908.03565.pdf" class="name">JPEG XL images</a>
 			<div class="engines">
 		<div class="engine blink experimental" title="Supported in Blink (experimental)"></div>
 	
@@ -207,14 +274,9 @@
 			<div class="engines">
 		<div class="engine blink" title="Supported in Blink"></div>
 	
-		<div class="engine webkit experimental" title="Supported in WebKit (experimental)"></div>
-	</div>
-		</li>
+		<div class="engine webkit" title="Supported in WebKit"></div>
 	
-		<li>
-			<a href="https://drafts.csswg.org/css-scoping-1/#selectordef-host-context" class="name">:host-context()</a>
-			<div class="engines">
-		<div class="engine blink" title="Supported in Blink"></div>
+		<div class="engine gecko experimental" title="Supported in Gecko (experimental)"></div>
 	</div>
 		</li>
 	
@@ -226,6 +288,253 @@
 		<div class="engine webkit prefixed" title="Supported in WebKit (prefixed)"></div>
 	
 		<div class="engine gecko" title="Supported in Gecko"></div>
+	</div>
+		</li>
+	
+		<li>
+			<a href="https://drafts.fxtf.org/css-masking-1/#positioned-masks" class="name">mask</a>
+			<div class="engines">
+		<div class="engine blink prefixed" title="Supported in Blink (prefixed)"></div>
+	
+		<div class="engine webkit" title="Supported in WebKit"></div>
+	
+		<div class="engine gecko" title="Supported in Gecko"></div>
+	</div>
+		</li>
+	
+		<li>
+			<a href="https://drafts.fxtf.org/css-masking-1/#the-mask-composite" class="name">mask-composite</a>
+			<div class="engines">
+		<div class="engine webkit" title="Supported in WebKit"></div>
+	
+		<div class="engine gecko" title="Supported in Gecko"></div>
+	</div>
+		</li>
+	
+		<li>
+			<a href="https://drafts.fxtf.org/css-masking-1/#the-mask-composite" class="name">-webkit-mask-composite</a>
+			<div class="engines">
+		<div class="engine blink prefixed" title="Supported in Blink (prefixed)"></div>
+	
+		<div class="engine webkit prefixed" title="Supported in WebKit (prefixed)"></div>
+	</div>
+		</li>
+	
+		<li>
+			<a href="https://drafts.fxtf.org/css-masking-1/#the-mask-mode" class="name">mask-mode</a>
+			<div class="engines">
+		<div class="engine webkit" title="Supported in WebKit"></div>
+	
+		<div class="engine gecko" title="Supported in Gecko"></div>
+	</div>
+		</li>
+	
+		<li>
+			<a href="https://drafts.fxtf.org/css-masking-1/#mask-borders" class="name">mask-border</a>
+			<div class="engines">
+		<div class="engine blink prefixed" title="Supported in Blink (prefixed)"></div>
+	
+		<div class="engine webkit prefixed" title="Supported in WebKit (prefixed)"></div>
+	</div>
+		</li>
+	
+		<li>
+			<a href="https://drafts.csswg.org/css-color-adjust-1/#print-color-adjust" class="name">print-color-adjust</a>
+			<div class="engines">
+		<div class="engine blink prefixed" title="Supported in Blink (prefixed)"></div>
+	
+		<div class="engine webkit" title="Supported in WebKit"></div>
+	
+		<div class="engine gecko" title="Supported in Gecko"></div>
+	</div>
+		</li>
+	
+		<li>
+			<a href="https://drafts.csswg.org/css-ui-4/#content-selection" class="name">user-select</a>
+			<div class="engines">
+		<div class="engine blink" title="Supported in Blink"></div>
+	
+		<div class="engine webkit prefixed" title="Supported in WebKit (prefixed)"></div>
+	
+		<div class="engine gecko" title="Supported in Gecko"></div>
+	</div>
+		</li>
+	
+		<li>
+			<a href="https://drafts.csswg.org/css-size-adjust-1/" class="name">text-size-adjust</a>
+			<div class="engines">
+		<div class="engine blink" title="Supported in Blink"></div>
+	
+		<div class="engine webkit prefixed" title="Supported in WebKit (prefixed)"></div>
+	
+		<div class="engine gecko prefixed" title="Supported in Gecko (prefixed)"></div>
+	</div>
+		</li>
+	
+		<li>
+			<a href="https://drafts.csswg.org/css-break-3/#break-decoration" class="name">box-decoration-break</a>
+			<div class="engines">
+		<div class="engine blink prefixed" title="Supported in Blink (prefixed)"></div>
+	
+		<div class="engine webkit prefixed" title="Supported in WebKit (prefixed)"></div>
+	
+		<div class="engine gecko" title="Supported in Gecko"></div>
+	</div>
+		</li>
+	
+		<li>
+			<a href="https://drafts.csswg.org/css-backgrounds-4/#valdef-background-clip-text" class="name">background-clip: text</a>
+			<div class="engines">
+		<div class="engine blink prefixed" title="Supported in Blink (prefixed)"></div>
+	
+		<div class="engine webkit" title="Supported in WebKit"></div>
+	
+		<div class="engine gecko" title="Supported in Gecko"></div>
+	</div>
+		</li>
+	
+		<li>
+			<a href="https://compat.spec.whatwg.org/#the-webkit-text-fill-color" class="name">-webkit-text-fill-color</a>
+			<div class="engines">
+		<div class="engine blink prefixed" title="Supported in Blink (prefixed)"></div>
+	
+		<div class="engine webkit prefixed" title="Supported in WebKit (prefixed)"></div>
+	
+		<div class="engine gecko prefixed" title="Supported in Gecko (prefixed)"></div>
+	</div>
+		</li>
+	
+		<li>
+			<a href="https://compat.spec.whatwg.org/#the-webkit-text-stroke" class="name">-webkit-text-stroke</a>
+			<div class="engines">
+		<div class="engine blink prefixed" title="Supported in Blink (prefixed)"></div>
+	
+		<div class="engine webkit prefixed" title="Supported in WebKit (prefixed)"></div>
+	
+		<div class="engine gecko prefixed" title="Supported in Gecko (prefixed)"></div>
+	</div>
+		</li>
+	
+		<li>
+			<a href="https://svgwg.org/svg2-draft/painting.html#PaintOrder" class="name">paint-order for -webkit-text-stroke</a>
+			<div class="engines">
+		<div class="engine webkit" title="Supported in WebKit"></div>
+	
+		<div class="engine gecko" title="Supported in Gecko"></div>
+	</div>
+		</li>
+	
+		<li>
+			<a href="https://developer.apple.com/library/archive/documentation/AppleApplications/Reference/SafariCSSRef/Articles/StandardCSSProperties.html#//apple_ref/doc/uid/TP30001266--webkit-text-security" class="name">-webkit-text-security</a>
+			<div class="engines">
+		<div class="engine blink prefixed" title="Supported in Blink (prefixed)"></div>
+	
+		<div class="engine webkit prefixed" title="Supported in WebKit (prefixed)"></div>
+	
+		<div class="engine gecko prefixed" title="Supported in Gecko (prefixed)"></div>
+	</div>
+		</li>
+	
+		<li>
+			<a href="https://drafts.csswg.org/css-text-3/#hyphenation" class="name">hyphens</a>
+			<div class="engines">
+		<div class="engine blink" title="Supported in Blink"></div>
+	
+		<div class="engine webkit prefixed" title="Supported in WebKit (prefixed)"></div>
+	
+		<div class="engine gecko" title="Supported in Gecko"></div>
+	</div>
+		</li>
+	
+		<li>
+			<a href="https://drafts.csswg.org/css-text-4/#hyphenate-character" class="name">hyphenate-character</a>
+			<div class="engines">
+		<div class="engine blink" title="Supported in Blink"></div>
+	
+		<div class="engine webkit prefixed" title="Supported in WebKit (prefixed)"></div>
+	
+		<div class="engine gecko" title="Supported in Gecko"></div>
+	</div>
+		</li>
+	
+		<li>
+			<a href="https://drafts.csswg.org/css-images-4/#cross-fade-function" class="name">cross-fade()</a>
+			<div class="engines">
+		<div class="engine blink prefixed" title="Supported in Blink (prefixed)"></div>
+	
+		<div class="engine webkit" title="Supported in WebKit"></div>
+	</div>
+		</li>
+	
+		<li>
+			<a href="https://drafts.csswg.org/css-overflow-4/#line-clamp" class="name">line-clamp</a>
+			<div class="engines">
+		<div class="engine blink prefixed" title="Supported in Blink (prefixed)"></div>
+	
+		<div class="engine webkit prefixed" title="Supported in WebKit (prefixed)"></div>
+	
+		<div class="engine gecko prefixed" title="Supported in Gecko (prefixed)"></div>
+	</div>
+		</li>
+	
+		<li>
+			<a href="https://drafts.csswg.org/css-images-4/#element-notation" class="name">element()</a>
+			<div class="engines">
+		<div class="engine gecko prefixed" title="Supported in Gecko (prefixed)"></div>
+	</div>
+		</li>
+	
+		<li>
+			<a href="https://developer.apple.com/library/archive/documentation/AppleApplications/Reference/SafariCSSRef/Articles/StandardCSSProperties.html#//apple_ref/doc/uid/TP30001266-SW16" class="name">-webkit-box-reflect</a>
+			<div class="engines">
+		<div class="engine blink prefixed" title="Supported in Blink (prefixed)"></div>
+	
+		<div class="engine webkit prefixed" title="Supported in WebKit (prefixed)"></div>
+	</div>
+		</li>
+	
+		<li>
+			<a href="https://drafts.csswg.org/css-sizing-4/#valdef-width-stretch" class="name">{inline, block}-size: stretch</a>
+			<div class="engines">
+		<div class="engine blink prefixed" title="Supported in Blink (prefixed)"></div>
+	
+		<div class="engine webkit prefixed" title="Supported in WebKit (prefixed)"></div>
+	
+		<div class="engine gecko prefixed" title="Supported in Gecko (prefixed)"></div>
+	</div>
+		</li>
+	
+		<li>
+			<a href="https://drafts.csswg.org/css-inline-3/#sizing-drop-initials" class="name">initial-letter</a>
+			<div class="engines">
+		<div class="engine blink" title="Supported in Blink"></div>
+	
+		<div class="engine webkit prefixed" title="Supported in WebKit (prefixed)"></div>
+	</div>
+		</li>
+	
+		<li>
+			<a href="https://drafts.csswg.org/css-text-decor-4/#text-decoration-property" class="name">text-decoration (shorthand)</a>
+			<div class="engines">
+		<div class="engine blink" title="Supported in Blink"></div>
+	
+		<div class="engine webkit prefixed" title="Supported in WebKit (prefixed)"></div>
+	
+		<div class="engine gecko" title="Supported in Gecko"></div>
+	</div>
+		</li>
+	
+		<li>
+			<a href="https://drafts.csswg.org/css-box-4/#margin-trim" class="name">margin-trim</a>
+			<div class="engines">
+		<div class="engine webkit" title="Supported in WebKit"></div>
+	</div>
+		</li>
+	
+		<li>
+			<a href="https://drafts.csswg.org/css-scoping-1/#selectordef-host-context" class="name">:host-context()</a>
+			<div class="engines">
+		<div class="engine blink" title="Supported in Blink"></div>
 	</div>
 		</li>
 	
@@ -255,13 +564,9 @@
 		</li>
 	
 		<li>
-			<a href="https://drafts.csswg.org/css-color-5/#color-mix" class="name">color-mix()</a>
+			<a href="https://drafts.fxtf.org/filter-effects-1/#FilterCSSImageValue" class="name">filter()</a>
 			<div class="engines">
-		<div class="engine blink" title="Supported in Blink"></div>
-	
 		<div class="engine webkit" title="Supported in WebKit"></div>
-	
-		<div class="engine gecko experimental" title="Supported in Gecko (experimental)"></div>
 	</div>
 		</li>
 	
@@ -269,6 +574,17 @@
 			<a href="https://drafts.csswg.org/css-color-5/#relative-colors" class="name">relative color syntax</a>
 			<div class="engines">
 		<div class="engine webkit" title="Supported in WebKit"></div>
+	</div>
+		</li>
+	
+		<li>
+			<a href="https://drafts.csswg.org/css-color-4/#funcdef-oklch" class="name">percentage values in lch() &amp; oklch()</a>
+			<div class="engines">
+		<div class="engine blink experimental" title="Supported in Blink (experimental)"></div>
+	
+		<div class="engine webkit" title="Supported in WebKit"></div>
+	
+		<div class="engine gecko" title="Supported in Gecko"></div>
 	</div>
 		</li>
 	
@@ -282,18 +598,18 @@
 		</li>
 	
 		<li>
-			<a href="https://drafts.csswg.org/css-grid-2/#subgrids" class="name">subgrid</a>
+			<a href="https://drafts.csswg.org/css-easing-2/#the-linear-easing-function" class="name">linear() easing function</a>
 			<div class="engines">
-		<div class="engine webkit" title="Supported in WebKit"></div>
+		<div class="engine blink" title="Supported in Blink"></div>
 	
 		<div class="engine gecko" title="Supported in Gecko"></div>
 	</div>
 		</li>
 	
 		<li>
-			<a href="https://drafts.fxtf.org/css-masking-1/#positioned-masks" class="name">masks</a>
+			<a href="https://drafts.csswg.org/css-grid-2/#subgrids" class="name">subgrid</a>
 			<div class="engines">
-		<div class="engine blink prefixed" title="Supported in Blink (prefixed)"></div>
+		<div class="engine blink experimental" title="Supported in Blink (experimental)"></div>
 	
 		<div class="engine webkit" title="Supported in WebKit"></div>
 	
@@ -305,28 +621,6 @@
 			<a href="https://drafts.csswg.org/css-page-3/#at-page-rule" class="name">@page</a>
 			<div class="engines">
 		<div class="engine blink" title="Supported in Blink"></div>
-	
-		<div class="engine gecko" title="Supported in Gecko"></div>
-	</div>
-		</li>
-	
-		<li>
-			<a href="https://drafts.csswg.org/css-color-adjust-1/#print-color-adjust" class="name">print-color-adjust</a>
-			<div class="engines">
-		<div class="engine blink prefixed" title="Supported in Blink (prefixed)"></div>
-	
-		<div class="engine webkit" title="Supported in WebKit"></div>
-	
-		<div class="engine gecko" title="Supported in Gecko"></div>
-	</div>
-		</li>
-	
-		<li>
-			<a href="https://drafts.csswg.org/css-ui-4/#content-selection" class="name">user-select</a>
-			<div class="engines">
-		<div class="engine blink" title="Supported in Blink"></div>
-	
-		<div class="engine webkit prefixed" title="Supported in WebKit (prefixed)"></div>
 	
 		<div class="engine gecko" title="Supported in Gecko"></div>
 	</div>
@@ -378,30 +672,17 @@
 		</li>
 	
 		<li>
-			<a href="https://drafts.csswg.org/css-color-4/#specifying-lab-lch" class="name">lab(), lch(), oklab(), oklch()</a>
-			<div class="engines">
-		<div class="engine blink" title="Supported in Blink"></div>
-	
-		<div class="engine webkit" title="Supported in WebKit"></div>
-	
-		<div class="engine gecko experimental" title="Supported in Gecko (experimental)"></div>
-	</div>
-		</li>
-	
-		<li>
-			<a href="https://drafts.csswg.org/selectors-4/#the-nth-child-pseudo" class="name">:nth-child(n of Selector)</a>
-			<div class="engines">
-		<div class="engine blink" title="Supported in Blink"></div>
-	
-		<div class="engine webkit" title="Supported in WebKit"></div>
-	
-		<div class="engine gecko experimental" title="Supported in Gecko (experimental)"></div>
-	</div>
-		</li>
-	
-		<li>
 			<a href="https://drafts.csswg.org/css-overflow-3/#logical" class="name">overflow-{block, inline}</a>
 			<div class="engines">
+		<div class="engine gecko" title="Supported in Gecko"></div>
+	</div>
+		</li>
+	
+		<li>
+			<a href="https://drafts.csswg.org/css-overflow-3/#overflow-clip-margin" class="name">overflow-clip-margin</a>
+			<div class="engines">
+		<div class="engine blink" title="Supported in Blink"></div>
+	
 		<div class="engine gecko" title="Supported in Gecko"></div>
 	</div>
 		</li>
@@ -428,110 +709,6 @@
 		</li>
 	
 		<li>
-			<a href="https://drafts.csswg.org/css-size-adjust-1/" class="name">text-size-adjust</a>
-			<div class="engines">
-		<div class="engine blink" title="Supported in Blink"></div>
-	
-		<div class="engine webkit prefixed" title="Supported in WebKit (prefixed)"></div>
-	
-		<div class="engine gecko prefixed" title="Supported in Gecko (prefixed)"></div>
-	</div>
-		</li>
-	
-		<li>
-			<a href="https://drafts.csswg.org/css-break-3/#break-decoration" class="name">box-decoration-break</a>
-			<div class="engines">
-		<div class="engine blink prefixed" title="Supported in Blink (prefixed)"></div>
-	
-		<div class="engine webkit prefixed" title="Supported in WebKit (prefixed)"></div>
-	
-		<div class="engine gecko" title="Supported in Gecko"></div>
-	</div>
-		</li>
-	
-		<li>
-			<a href="https://drafts.csswg.org/css-backgrounds-4/#valdef-background-clip-text" class="name">background-clip: text</a>
-			<div class="engines">
-		<div class="engine blink prefixed" title="Supported in Blink (prefixed)"></div>
-	
-		<div class="engine webkit prefixed" title="Supported in WebKit (prefixed)"></div>
-	
-		<div class="engine gecko" title="Supported in Gecko"></div>
-	</div>
-		</li>
-	
-		<li>
-			<a href="https://compat.spec.whatwg.org/#the-webkit-text-fill-color" class="name">-webkit-text-fill-color</a>
-			<div class="engines">
-		<div class="engine blink prefixed" title="Supported in Blink (prefixed)"></div>
-	
-		<div class="engine webkit prefixed" title="Supported in WebKit (prefixed)"></div>
-	
-		<div class="engine gecko prefixed" title="Supported in Gecko (prefixed)"></div>
-	</div>
-		</li>
-	
-		<li>
-			<a href="https://compat.spec.whatwg.org/#the-webkit-text-stroke" class="name">-webkit-text-stroke</a>
-			<div class="engines">
-		<div class="engine blink prefixed" title="Supported in Blink (prefixed)"></div>
-	
-		<div class="engine webkit prefixed" title="Supported in WebKit (prefixed)"></div>
-	
-		<div class="engine gecko prefixed" title="Supported in Gecko (prefixed)"></div>
-	</div>
-		</li>
-	
-		<li>
-			<a href="https://drafts.csswg.org/css-text-3/#hyphenation" class="name">hyphens</a>
-			<div class="engines">
-		<div class="engine blink" title="Supported in Blink"></div>
-	
-		<div class="engine webkit prefixed" title="Supported in WebKit (prefixed)"></div>
-	
-		<div class="engine gecko" title="Supported in Gecko"></div>
-	</div>
-		</li>
-	
-		<li>
-			<a href="https://drafts.csswg.org/css-text-4/#hyphenate-character" class="name">hyphenate-character</a>
-			<div class="engines">
-		<div class="engine blink" title="Supported in Blink"></div>
-	
-		<div class="engine webkit prefixed" title="Supported in WebKit (prefixed)"></div>
-	
-		<div class="engine gecko" title="Supported in Gecko"></div>
-	</div>
-		</li>
-	
-		<li>
-			<a href="https://drafts.csswg.org/css-overflow-4/#line-clamp" class="name">line-clamp</a>
-			<div class="engines">
-		<div class="engine blink prefixed" title="Supported in Blink (prefixed)"></div>
-	
-		<div class="engine webkit prefixed" title="Supported in WebKit (prefixed)"></div>
-	
-		<div class="engine gecko prefixed" title="Supported in Gecko (prefixed)"></div>
-	</div>
-		</li>
-	
-		<li>
-			<a href="https://drafts.csswg.org/css-images-4/#element-notation" class="name">element()</a>
-			<div class="engines">
-		<div class="engine gecko prefixed" title="Supported in Gecko (prefixed)"></div>
-	</div>
-		</li>
-	
-		<li>
-			<a href="https://developer.apple.com/library/archive/documentation/AppleApplications/Reference/SafariCSSRef/Articles/StandardCSSProperties.html#//apple_ref/doc/uid/TP30001266-SW16" class="name">-webkit-box-reflect</a>
-			<div class="engines">
-		<div class="engine blink prefixed" title="Supported in Blink (prefixed)"></div>
-	
-		<div class="engine webkit prefixed" title="Supported in WebKit (prefixed)"></div>
-	</div>
-		</li>
-	
-		<li>
 			<a href="https://drafts.csswg.org/css-contain-2/#content-visibility" class="name">content-visibility</a>
 			<div class="engines">
 		<div class="engine blink" title="Supported in Blink"></div>
@@ -548,33 +725,6 @@
 		</li>
 	
 		<li>
-			<a href="https://drafts.csswg.org/css-sizing-4/#valdef-width-stretch" class="name">{inline, block}-size: stretch</a>
-			<div class="engines">
-		<div class="engine blink prefixed" title="Supported in Blink (prefixed)"></div>
-	
-		<div class="engine webkit prefixed" title="Supported in WebKit (prefixed)"></div>
-	
-		<div class="engine gecko prefixed" title="Supported in Gecko (prefixed)"></div>
-	</div>
-		</li>
-	
-		<li>
-			<a href="https://drafts.csswg.org/css-box-4/#margin-trim" class="name">margin-trim</a>
-			<div class="engines">
-		<div class="engine webkit" title="Supported in WebKit"></div>
-	</div>
-		</li>
-	
-		<li>
-			<a href="https://drafts.csswg.org/css-inline-3/#sizing-drop-initials" class="name">initial-letter</a>
-			<div class="engines">
-		<div class="engine blink" title="Supported in Blink"></div>
-	
-		<div class="engine webkit prefixed" title="Supported in WebKit (prefixed)"></div>
-	</div>
-		</li>
-	
-		<li>
 			<a href="https://drafts.csswg.org/css-counter-styles-3/#the-counter-style-rule" class="name">@counter-style</a>
 			<div class="engines">
 		<div class="engine blink" title="Supported in Blink"></div>
@@ -584,7 +734,7 @@
 		</li>
 	
 		<li>
-			<a href="https://drafts.csswg.org/css-lists/#propdef-counter-set" class="name">counter-set</a>
+			<a href="https://drafts.csswg.org/css-lists-3/#propdef-counter-set" class="name">counter-set</a>
 			<div class="engines">
 		<div class="engine blink" title="Supported in Blink"></div>
 	
@@ -593,9 +743,9 @@
 		</li>
 	
 		<li>
-			<a href="https://drafts.csswg.org/css-values-4/#trig-funcs" class="name">trigonometric functions in calc()</a>
+			<a href="https://drafts.csswg.org/css-values-4/#round-func" class="name">stepped value functions (round(), mod(), rem())</a>
 			<div class="engines">
-		<div class="engine blink" title="Supported in Blink"></div>
+		<div class="engine blink experimental" title="Supported in Blink (experimental)"></div>
 	
 		<div class="engine webkit" title="Supported in WebKit"></div>
 	
@@ -604,9 +754,33 @@
 		</li>
 	
 		<li>
-			<a href="https://drafts.csswg.org/css-values-4/#exponent-funcs" class="name">exponential functions in calc()</a>
+			<a href="https://drafts.csswg.org/css-values-4/#exponent-funcs" class="name">exponential functions (pow(), sqrt(), hypot(), log(), exp())</a>
 			<div class="engines">
+		<div class="engine blink experimental" title="Supported in Blink (experimental)"></div>
+	
 		<div class="engine webkit" title="Supported in WebKit"></div>
+	
+		<div class="engine gecko experimental" title="Supported in Gecko (experimental)"></div>
+	</div>
+		</li>
+	
+		<li>
+			<a href="https://drafts.csswg.org/css-values-4/#sign-funcs" class="name">sign-related functions (abs(), sign())</a>
+			<div class="engines">
+		<div class="engine blink experimental" title="Supported in Blink (experimental)"></div>
+	
+		<div class="engine webkit" title="Supported in WebKit"></div>
+	</div>
+		</li>
+	
+		<li>
+			<a href="https://drafts.csswg.org/css-values-4/#calc-constants" class="name">numeric constants (e, pi, infinity)</a>
+			<div class="engines">
+		<div class="engine blink experimental" title="Supported in Blink (experimental)"></div>
+	
+		<div class="engine webkit" title="Supported in WebKit"></div>
+	
+		<div class="engine gecko experimental" title="Supported in Gecko (experimental)"></div>
 	</div>
 		</li>
 	
@@ -614,26 +788,6 @@
 			<a href="https://drafts.fxtf.org/css-masking-1/#the-clip-path" class="name">clip-path: external SVGs</a>
 			<div class="engines">
 		<div class="engine gecko" title="Supported in Gecko"></div>
-	</div>
-		</li>
-	
-		<li>
-			<a href="https://drafts.fxtf.org/css-masking-1/#the-mask-composite" class="name">mask-composite</a>
-			<div class="engines">
-		<div class="engine webkit" title="Supported in WebKit"></div>
-	
-		<div class="engine gecko" title="Supported in Gecko"></div>
-	</div>
-		</li>
-	
-		<li>
-			<a href="https://drafts.csswg.org/css-color-5/#color-function" class="name">color()</a>
-			<div class="engines">
-		<div class="engine blink" title="Supported in Blink"></div>
-	
-		<div class="engine webkit" title="Supported in WebKit"></div>
-	
-		<div class="engine gecko experimental" title="Supported in Gecko (experimental)"></div>
 	</div>
 		</li>
 	
@@ -737,15 +891,6 @@
 		</li>
 	
 		<li>
-			<a href="https://drafts.fxtf.org/css-masking-1/#the-mask-mode" class="name">mask-mode</a>
-			<div class="engines">
-		<div class="engine webkit" title="Supported in WebKit"></div>
-	
-		<div class="engine gecko" title="Supported in Gecko"></div>
-	</div>
-		</li>
-	
-		<li>
 			<a href="https://drafts.csswg.org/css-animations-2/#animation-composition" class="name">animation-composition</a>
 			<div class="engines">
 		<div class="engine blink" title="Supported in Blink"></div>
@@ -760,6 +905,15 @@
 			<a href="https://drafts.csswg.org/css-images-5/#the-object-view-box" class="name">object-view-box</a>
 			<div class="engines">
 		<div class="engine blink" title="Supported in Blink"></div>
+	</div>
+		</li>
+	
+		<li>
+			<a href="https://drafts.csswg.org/css-values-4/#lh" class="name">{lh, rlh} units</a>
+			<div class="engines">
+		<div class="engine blink" title="Supported in Blink"></div>
+	
+		<div class="engine webkit" title="Supported in WebKit"></div>
 	</div>
 		</li>
 	
@@ -887,7 +1041,7 @@
 		</li>
 	
 		<li>
-			<a href="https://drafts.csswg.org/css-overflow/#scrollbar-gutter-property" class="name">scrollbar-gutter</a>
+			<a href="https://drafts.csswg.org/css-overflow-3/#scrollbar-gutter-property" class="name">scrollbar-gutter</a>
 			<div class="engines">
 		<div class="engine blink" title="Supported in Blink"></div>
 	
@@ -910,16 +1064,12 @@
 		</li>
 	
 		<li>
-			<a href="https://developer.apple.com/library/archive/documentation/AppleApplications/Reference/SafariCSSRef/Articles/StandardCSSProperties.html#//apple_ref/doc/uid/TP30001266-SW15" class="name">zoom (non-standard)</a>
-			<div class="engines">
-		<div class="engine blink" title="Supported in Blink"></div>
-	
-		<div class="engine webkit" title="Supported in WebKit"></div>
-	</div>
+			<a href="https://drafts.csswg.org/css-line-grid-1/#line-grid-property" class="name">line-grid</a>
+			<div class="engines"></div>
 		</li>
 	
 		<li>
-			<a href="https://drafts.csswg.org/css-line-grid-1/#line-grid-property" class="name">line-grid</a>
+			<a href="https://drafts.csswg.org/css-values-4/#interpolate" class="name">mix()</a>
 			<div class="engines"></div>
 		</li>
 	
@@ -985,7 +1135,9 @@
 	
 		<li>
 			<a href="https://drafts.csswg.org/mediaqueries-5/#scripting" class="name">@media (scripting)</a>
-			<div class="engines"></div>
+			<div class="engines">
+		<div class="engine gecko" title="Supported in Gecko"></div>
+	</div>
 		</li>
 	
 		<li>
@@ -1082,6 +1234,21 @@
 			<a href="https://drafts.csswg.org/css-gcpm-4/#copy-into-heading" class="name">copy-into</a>
 			<div class="engines"></div>
 		</li>
+	
+		<li>
+			<a href="https://drafts.csswg.org/css-exclusions-1/" class="name">exclusions (wrap-flow &amp; wrap-through)</a>
+			<div class="engines"></div>
+		</li>
+	
+		<li>
+			<a href="https://drafts.csswg.org/css-regions-1/" class="name">regions (flow-into &amp; flow-from)</a>
+			<div class="engines"></div>
+		</li>
+	
+		<li>
+			<a href="https://drafts.csswg.org/css-rhythm-1/" class="name">rhythmic sizing</a>
+			<div class="engines"></div>
+		</li>
 	</ul>
 			</li>
 			<li>
@@ -1101,14 +1268,14 @@
 		<li>
 			<a href="https://wicg.github.io/file-system-access/" class="name">file system access</a>
 			<div class="engines">
-		<div class="engine blink" title="Supported in Blink"></div>
+		<div class="engine blink limited-support" title="Supported in Blink (limited support)"></div>
 	</div>
 		</li>
 	
 		<li>
 			<a href="https://wicg.github.io/manifest-incubations/#file_handlers-member" class="name">file handling</a>
 			<div class="engines">
-		<div class="engine blink" title="Supported in Blink"></div>
+		<div class="engine blink limited-support" title="Supported in Blink (limited support)"></div>
 	</div>
 		</li>
 	
@@ -1149,7 +1316,7 @@
 		<li>
 			<a href="https://gpuweb.github.io/gpuweb/" class="name">WebGPU</a>
 			<div class="engines">
-		<div class="engine blink" title="Supported in Blink"></div>
+		<div class="engine blink limited-support" title="Supported in Blink (limited support)"></div>
 	
 		<div class="engine webkit experimental" title="Supported in WebKit (experimental)"></div>
 	
@@ -1165,6 +1332,13 @@
 		<div class="engine webkit" title="Supported in WebKit"></div>
 	
 		<div class="engine gecko experimental" title="Supported in Gecko (experimental)"></div>
+	</div>
+		</li>
+	
+		<li>
+			<a href="https://arai-a.github.io/ecma262-compare/?pr=2418" class="name">RegExp v flag (RegExp.prototype.unicodeSets)</a>
+			<div class="engines">
+		<div class="engine blink" title="Supported in Blink"></div>
 	</div>
 		</li>
 	
@@ -1220,20 +1394,18 @@
 		</li>
 	
 		<li>
-			<a href="https://wicg.github.io/eyedropper-api/" class="name">Eyedropper</a>
+			<a href="https://wicg.github.io/eyedropper-api/" class="name">EyeDropper</a>
 			<div class="engines">
-		<div class="engine blink" title="Supported in Blink"></div>
+		<div class="engine blink limited-support" title="Supported in Blink (limited support)"></div>
 	</div>
 		</li>
 	
 		<li>
-			<a href="https://wicg.github.io/compression/" class="name">(De)CompressionStream</a>
+			<a href="https://tc39.es/ecma402/#segmenter-objects" class="name">Intl.Segmenter</a>
 			<div class="engines">
 		<div class="engine blink" title="Supported in Blink"></div>
 	
 		<div class="engine webkit" title="Supported in WebKit"></div>
-	
-		<div class="engine gecko experimental" title="Supported in Gecko (experimental)"></div>
 	</div>
 		</li>
 	
@@ -1425,7 +1597,7 @@
 		<li>
 			<a href="https://w3c.github.io/web-share/#share-method" class="name">navigator.share()</a>
 			<div class="engines">
-		<div class="engine blink" title="Supported in Blink"></div>
+		<div class="engine blink limited-support" title="Supported in Blink (limited support)"></div>
 	
 		<div class="engine webkit" title="Supported in WebKit"></div>
 	
@@ -1436,7 +1608,7 @@
 		<li>
 			<a href="https://w3c.github.io/web-share/#dom-sharedata-files" class="name">navigator.share(): files</a>
 			<div class="engines">
-		<div class="engine blink" title="Supported in Blink"></div>
+		<div class="engine blink limited-support" title="Supported in Blink (limited support)"></div>
 	
 		<div class="engine webkit" title="Supported in WebKit"></div>
 	</div>
@@ -1445,7 +1617,7 @@
 		<li>
 			<a href="https://w3c.github.io/web-share-target/" class="name">share target</a>
 			<div class="engines">
-		<div class="engine blink" title="Supported in Blink"></div>
+		<div class="engine blink limited-support" title="Supported in Blink (limited support)"></div>
 	</div>
 		</li>
 	
@@ -1572,6 +1744,133 @@
 		<div class="engine blink experimental" title="Supported in Blink (experimental)"></div>
 	
 		<div class="engine gecko" title="Supported in Gecko"></div>
+	</div>
+		</li>
+	
+		<li>
+			<a href="https://w3c.github.io/vibration/" class="name">vibration</a>
+			<div class="engines">
+		<div class="engine blink" title="Supported in Blink"></div>
+	
+		<div class="engine gecko" title="Supported in Gecko"></div>
+	</div>
+		</li>
+	
+		<li>
+			<a href="https://w3c.github.io/ambient-light/" class="name">ambient light sensor</a>
+			<div class="engines">
+		<div class="engine blink experimental" title="Supported in Blink (experimental)"></div>
+	</div>
+		</li>
+	
+		<li>
+			<a href="https://w3c.github.io/badging/" class="name">badging </a>
+			<div class="engines">
+		<div class="engine blink limited-support" title="Supported in Blink (limited support)"></div>
+	
+		<div class="engine webkit limited-support" title="Supported in WebKit (limited support)"></div>
+	</div>
+		</li>
+	
+		<li>
+			<a href="https://w3c.github.io/deviceorientation/#deviceorientationabsolute" class="name">deviceorientationabsolute event </a>
+			<div class="engines">
+		<div class="engine blink" title="Supported in Blink"></div>
+	
+		<div class="engine gecko experimental" title="Supported in Gecko (experimental)"></div>
+	</div>
+		</li>
+	
+		<li>
+			<a href="https://github.com/w3c/editing/blob/gh-pages/docs/clipboard-pickling/explainer.md" class="name">clipboard web custom formats </a>
+			<div class="engines">
+		<div class="engine blink" title="Supported in Blink"></div>
+	</div>
+		</li>
+	
+		<li>
+			<a href="https://w3c.github.io/compute-pressure/" class="name">compute pressure</a>
+			<div class="engines">
+		<div class="engine blink experimental" title="Supported in Blink (experimental)"></div>
+	</div>
+		</li>
+	
+		<li>
+			<a href="https://w3c.github.io/contact-picker/" class="name">contact picker</a>
+			<div class="engines">
+		<div class="engine blink limited-support" title="Supported in Blink (limited support)"></div>
+	</div>
+		</li>
+	
+		<li>
+			<a href="https://wicg.github.io/content-index/spec/" class="name">Content Index</a>
+			<div class="engines">
+		<div class="engine blink limited-support" title="Supported in Blink (limited support)"></div>
+	</div>
+		</li>
+	
+		<li>
+			<a href="https://w3c.github.io/webcodecs/" class="name">WebCodecs: video</a>
+			<div class="engines">
+		<div class="engine blink" title="Supported in Blink"></div>
+	
+		<div class="engine webkit" title="Supported in WebKit"></div>
+	</div>
+		</li>
+	
+		<li>
+			<a href="https://w3c.github.io/webcodecs/" class="name">WebCodecs: audio</a>
+			<div class="engines">
+		<div class="engine blink" title="Supported in Blink"></div>
+	</div>
+		</li>
+	
+		<li>
+			<a href="https://wicg.github.io/cookie-store/" class="name">CookieStore</a>
+			<div class="engines">
+		<div class="engine blink" title="Supported in Blink"></div>
+	</div>
+		</li>
+	
+		<li>
+			<a href="https://w3c.github.io/battery/" class="name">battery status</a>
+			<div class="engines">
+		<div class="engine blink" title="Supported in Blink"></div>
+	</div>
+		</li>
+	
+		<li>
+			<a href="https://wicg.github.io/custom-state-pseudo-class/" class="name">custom state pseudo class</a>
+			<div class="engines">
+		<div class="engine blink" title="Supported in Blink"></div>
+	</div>
+		</li>
+	
+		<li>
+			<a href="https://wicg.github.io/idle-detection/" class="name">Idle Detection</a>
+			<div class="engines">
+		<div class="engine blink" title="Supported in Blink"></div>
+	</div>
+		</li>
+	
+		<li>
+			<a href="https://wicg.github.io/is-input-pending/" class="name">is input pending</a>
+			<div class="engines">
+		<div class="engine blink" title="Supported in Blink"></div>
+	</div>
+		</li>
+	
+		<li>
+			<a href="https://wicg.github.io/js-self-profiling/" class="name">JS Self-Profiling</a>
+			<div class="engines">
+		<div class="engine blink" title="Supported in Blink"></div>
+	</div>
+		</li>
+	
+		<li>
+			<a href="https://wicg.github.io/performance-measure-memory/" class="name">measure memory</a>
+			<div class="engines">
+		<div class="engine blink" title="Supported in Blink"></div>
 	</div>
 		</li>
 	

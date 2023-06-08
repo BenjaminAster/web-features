@@ -25,7 +25,7 @@ for (const [category, featureList] of Object.entries(features)) {
 		for (const { engine, engineName, labels } of support) {
 			const engineClone = engineTemplate.cloneNode(true).content;
 			engineClone.querySelector(".engine").classList.add(engine, ...labels);
-			engineClone.querySelector(".engine").setAttribute("title", `Supported in ${engineName}${labels.length ? ` (${labels.join(", ")})` : ""}`);
+			engineClone.querySelector(".engine").setAttribute("title", `Supported in ${engineName}${labels.length ? ` (${labels.join(", ").replaceAll("-", " ")})` : ""}`);
 			clone.querySelector(".engines").append(engineClone);
 		}
 		document.getElementById(category).append(clone);

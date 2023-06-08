@@ -4,7 +4,6 @@
 <head>
 	<meta charset="UTF-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
-	<meta name="color-scheme" content="dark light" />
 	<meta name="robots" content="all" />
 	<meta name="description" content="An overview of (mostly new) web features that are not yet fully supported in all three browser engines." />
 	<meta name="repository" content="https://github.com/BenjaminAster/web-features" />
@@ -14,6 +13,10 @@
 	<link rel="icon" href="./assets/icon.svg" />
 
 	<link rel="stylesheet" href="./main.css" />
+
+	<link rel="preload" as="image" href="./assets/blink.svg" />
+	<link rel="preload" as="image" href="./assets/gecko.svg" />
+	<link rel="preload" as="image" href="./assets/webkit.svg" />
 </head>
 
 <body>
@@ -41,7 +44,7 @@
 			<div class="expansion">
 				<div>
 					<p>
-						This site provides an overview of many web features that are not yet fully supported in all three major browser engines.
+						This site provides an overview of many web features that are not yet fully supported (unprefixed) in all three major browser engines.
 						These range from features already implemented in two browser engines up to unofficial drafts and even just proposals.
 						The three major browser engines are:
 					</p>
@@ -59,7 +62,7 @@
 							<tr>
 								<td><img class="engine" src="./assets/blink.svg" alt="logo of Blink (actually the Chromium logo because Blink doesn't have its own logo)"></td>
 								<td>Blink</td>
-								<td>Chromium</td>
+								<td>Chrome/Chromium</td>
 								<td>Google</td>
 							</tr>
 							<tr>
@@ -73,6 +76,68 @@
 								<td>Gecko</td>
 								<td>Firefox</td>
 								<td>Mozilla</td>
+							</tr>
+						</tbody>
+					</table>
+
+					<h3>Legend</h3>
+
+					<table>
+						<thead>
+							<tr>
+								<td>Icon</td>
+								<td>Description</td>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>
+									<div class="engines">
+										<div class="engine blink"></div>
+										<div class="engine webkit"></div>
+										<div class="engine gecko"></div>
+									</div>
+								</td>
+								<td>
+									The feature is supported in the current stable version of the associated browser.
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<div class="engines">
+										<div class="engine blink experimental"></div>
+										<div class="engine webkit experimental"></div>
+										<div class="engine gecko experimental"></div>
+									</div>
+								</td>
+								<td>
+									The feature is experimentally supported in a developer preview version of the associated browser.
+									A special flag might need to be enabled.
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<div class="engines">
+										<div class="engine blink prefixed"></div>
+										<div class="engine webkit prefixed"></div>
+										<div class="engine gecko prefixed"></div>
+									</div>
+								</td>
+								<td>
+									The feature uses a non-standard, vendor-prefixed name.
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<div class="engines">
+										<div class="engine blink limited-support"></div>
+										<div class="engine webkit limited-support"></div>
+										<div class="engine gecko limited-support"></div>
+									</div>
+								</td>
+								<td>
+									The feature has limited support (e.g. not available on all platforms)
+								</td>
 							</tr>
 						</tbody>
 					</table>
