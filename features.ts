@@ -10,14 +10,13 @@ const prefixed = "prefixed";
 const limitedSupport = "limited-support";
 
 const blink = (...labels: string[]) => ({ engine: "blink", engineName: "Blink", labels });
-const webkit = (...labels: string[]) => ({ engine: "webkit", engineName: "WebKit", labels );
+const webkit = (...labels: string[]) => ({ engine: "webkit", engineName: "WebKit", labels });
 const gecko = (...labels: string[]) => ({ engine: "gecko", engineName: "Gecko", labels });
 
 export default {
 	html: [
-		["modulepreload", [blink(), webkit(experimental), gecko()], "https://html.spec.whatwg.org/multipage/links.html#link-type-modulepreload"],
 		["<selectlist>", [blink(experimental)], "https://open-ui.org/components/selectlist/"],
-		["popover", [blink(), webkit(experimental), gecko(experimental)], "https://html.spec.whatwg.org/multipage/popover.html#the-popover-attribute"],
+		["popover", [blink(), webkit(), gecko(experimental)], "https://html.spec.whatwg.org/multipage/popover.html#the-popover-attribute"],
 		["theme-color", [blink(limitedSupport), webkit()], "https://html.spec.whatwg.org/multipage/semantics.html#meta-theme-color"],
 		["<fencedframe>", [blink()], "https://wicg.github.io/fenced-frame/#the-fencedframe-element"],
 		["<portal>", [blink(experimental)], "https://wicg.github.io/portals/#the-portal-element"],
@@ -26,7 +25,7 @@ export default {
 		["focusgroup", [blink(experimental)], "https://open-ui.org/components/focusgroup.explainer"],
 		['contenteditable="plaintext-only"', [blink(), webkit()], "https://w3c.github.io/contentEditable/#plaintext_only_state"],
 		["URL Fragment Text Directives", [blink(), webkit()], "https://wicg.github.io/scroll-to-text-fragment/"],
-		["JPEG XL images", [webkit(experimental), gecko(experimental)], "https://arxiv.org/ftp/arxiv/papers/1908/1908.03565.pdf"],
+		["JPEG XL images", [webkit(), gecko(experimental)], "https://arxiv.org/ftp/arxiv/papers/1908/1908.03565.pdf"],
 		["SVG favicons", [blink(), gecko()], "https://html.spec.whatwg.org/multipage/links.html#rel-icon"],
 		["AV1 videos", [blink(), gecko()], "https://aomediacodec.github.io/av1-spec/"],
 		["<model>", [webkit(experimental)], "https://immersive-web.github.io/model-element/"],
@@ -47,8 +46,6 @@ export default {
 		["-webkit-text-stroke", [blink(prefixed), webkit(prefixed), gecko(prefixed)], "https://compat.spec.whatwg.org/#the-webkit-text-stroke"],
 		["paint-order for -webkit-text-stroke", [webkit(), gecko()], "https://svgwg.org/svg2-draft/painting.html#PaintOrder"],
 		["-webkit-text-security", [blink(prefixed), webkit(prefixed), gecko(prefixed)], "https://developer.apple.com/library/archive/documentation/AppleApplications/Reference/SafariCSSRef/Articles/StandardCSSProperties.html#//apple_ref/doc/uid/TP30001266--webkit-text-security"],
-		["hyphens", [blink(), webkit(prefixed), gecko()], "https://drafts.csswg.org/css-text-3/#hyphenation"],
-		["hyphenate-character", [blink(), webkit(prefixed), gecko()], "https://drafts.csswg.org/css-text-4/#hyphenate-character"],
 		["cross-fade()", [blink(prefixed), webkit()], "https://drafts.csswg.org/css-images-4/#cross-fade-function"],
 		["line-clamp", [blink(prefixed), webkit(prefixed), gecko(prefixed)], "https://drafts.csswg.org/css-overflow-4/#line-clamp"],
 		["element()", [gecko(prefixed)], "https://drafts.csswg.org/css-images-4/#element-notation"],
@@ -59,7 +56,7 @@ export default {
 		[":host-context()", [blink()], "https://drafts.csswg.org/css-scoping-1/#selectordef-host-context"],
 		["view transitions", [blink()], "https://drafts.csswg.org/css-view-transitions-1/"],
 		["@property", [blink(), webkit()], "https://drafts.css-houdini.org/css-properties-values-api-1/#at-property-rule"],
-		[":has()", [blink(), webkit()], "https://drafts.csswg.org/selectors-4/#relational"],
+		[":has()", [blink(), webkit(), gecko(experimental)], "https://drafts.csswg.org/selectors-4/#relational"],
 		["filter()", [webkit()], "https://drafts.fxtf.org/filter-effects-1/#FilterCSSImageValue"],
 		["relative color syntax", [blink(experimental), webkit()], "https://drafts.csswg.org/css-color-5/#relative-colors"],
 		["contrast-color()", [blink(experimental), webkit(experimental)], "https://drafts.csswg.org/css-color-6/#colorcontrast"],
@@ -115,7 +112,7 @@ export default {
 		["text-justify", [gecko()], "https://drafts.csswg.org/css-text-4/#propdef-text-justify"],
 		["toggle", [blink(experimental)], "https://tabatkins.github.io/css-toggle/"],
 		["text-wrap: balance", [blink()], "https://drafts.csswg.org/css-text-4/#text-wrap"],
-		["@media (scripting)", [gecko()], "https://drafts.csswg.org/mediaqueries-5/#scripting"],
+		["@media (scripting)", [webkit(), gecko()], "https://drafts.csswg.org/mediaqueries-5/#scripting"],
 		["line-grid", [], "https://drafts.csswg.org/css-line-grid-1/#line-grid-property"],
 		["mix()", [], "https://drafts.csswg.org/css-values-4/#interpolate"],
 		["@page margin boxes", [], "https://drafts.csswg.org/css-page-3/#margin-boxes"],
@@ -159,11 +156,10 @@ export default {
 		["Array.fromAsync()", [webkit(), gecko()], "https://tc39.es/proposal-array-from-async/"],
 		["file system access", [blink(limitedSupport)], "https://wicg.github.io/file-system-access/"],
 		["file handling", [blink(limitedSupport)], "https://wicg.github.io/manifest-incubations/#file_handlers-member"],
-		["navigator.storage.estimate()", [blink(), webkit(experimental), gecko()], "https://storage.spec.whatwg.org/#storagemanager"],
 		["navigator.userAgentData", [blink()], "https://wicg.github.io/ua-client-hints/#interface"],
 		["WebGPU", [blink(limitedSupport), webkit(experimental), gecko(experimental)], "https://gpuweb.github.io/gpuweb/"],
 		["{Object, Map}.groupBy()", [blink(), webkit(experimental), gecko(experimental)], "https://tc39.es/proposal-array-grouping/"],
-		["RegExp v flag (RegExp.prototype.unicodeSets)", [blink(), webkit(experimental)], "https://tc39.es/ecma262/multipage/text-processing.html#sec-get-regexp.prototype.unicodesets"],
+		["RegExp v flag (RegExp.prototype.unicodeSets)", [blink(), webkit()], "https://tc39.es/ecma262/multipage/text-processing.html#sec-get-regexp.prototype.unicodesets"],
 		["Set methods", [webkit(experimental)], "https://tc39.es/proposal-set-methods/"],
 		["import attributes", [webkit(experimental)], "https://tc39.es/proposal-import-attributes/"],
 		["import attributes with deprecated 'assert' keyword", [blink(), webkit()], "https://tc39.es/proposal-import-attributes/"],
