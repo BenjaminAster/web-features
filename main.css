@@ -4,9 +4,6 @@
 	font-family: system-ui, sans-serif;
 	overflow-wrap: break-word;
 	line-height: 1.5;
-
-	-webkit-text-size-adjust: none;
-	text-size-adjust: none;
 	-webkit-tap-highlight-color: transparent;
 
 	scrollbar-color: #8886 transparent;

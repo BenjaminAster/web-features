@@ -18,11 +18,12 @@
 	<title>CSS Properties</title>
 
 	<!-- <link rel="stylesheet" href="./main.css" /> -->
-	<link rel="preload" as="fetch" crossorigin href="https://w3c.github.io/csswg-drafts/indexes/" />
+	<link rel="preload" as="fetch" crossorigin href="https://drafts.csswg.org/indexes/" />
 
 	<script type="module">
 		let /** @type {string[]} */ browserProperties = [];
 		let /** @type {string[]} */ speccedProperties = [];
+		let /** @type {string[]} */ webindexProperties = [];
 		let /** @type {Set<string>} */ allProperties = new Set();
 
 		{
@@ -35,13 +36,21 @@
 		}
 
 		{
-			const indexesURL = "https://w3c.github.io/csswg-drafts/indexes/";
-			const doc = new DOMParser().parseFromString(await (await window.fetch(indexesURL)).text(), "text/html");
-			for (const element of doc.querySelectorAll("#properties + div .index > li")) {
+			const indexesURL = "https://drafts.csswg.org/indexes/";
+			const doc = new DOMParser().parseFromString(await(await window.fetch(indexesURL)).text(), "text/html");
+			for (const element of doc.querySelectorAll("#properties + div > .index > li")) {
 				const property = element.firstChild.textContent.trim();
 				if (property.startsWith("--") || element.firstChild.href?.match(/#descdef-/)) continue;
 				speccedProperties.push(property);
 				allProperties.add(property);
+			}
+		}
+
+		{
+			const { cssProperties } = await(await window.fetch("/webindex/index/css.json")).json();
+			for (const { name } of cssProperties) {
+				webindexProperties.push(name);
+				allProperties.add(name);
 			}
 		}
 
@@ -51,6 +60,7 @@
 			for (const property of [...allProperties].sort()) {
 				const clone = fragment.cloneNode(true);
 				if (browserProperties.includes(property)) clone.querySelector(".browser").textContent = property;
+				if (webindexProperties.includes(property)) clone.querySelector(".webindex").textContent = property;
 				if (speccedProperties.includes(property)) clone.querySelector(".specced").textContent = property;
 				tbody.append(clone);
 			}
@@ -76,7 +86,7 @@
 			border-collapse: collapse;
 		}
 
-		tr > td {
+		tr>td {
 			border: 1px solid currentColor;
 			padding: .3em .5em;
 		}
@@ -92,7 +102,8 @@
 	<table id="properties">
 		<thead>
 			<tr>
-				<td>In a specification:</td>
+				<td>In the <a href="https://drafts.csswg.org/indexes/">CSSWG CSS index</a>:</td>
+				<td>In my <a href="/webindex/">Web Index</a>:</td>
 				<td>Your browser supports:</td>
 			</tr>
 		</thead>
@@ -100,6 +111,7 @@
 			<template>
 				<tr>
 					<td class="specced"></td>
+					<td class="webindex"></td>
 					<td class="browser"></td>
 				</tr>
 			</template>
