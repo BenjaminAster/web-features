@@ -4,21 +4,12 @@
 <head>
 	<meta charset="UTF-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1, interactive-widget=resizes-content" />
-	<meta name="color-scheme" content="dark light" />
-	<meta name="robots" content="all" />
-	<meta name="author" content="Benjamin Aster" />
-	<meta name="description" content="DESCRIPTION" />
-	<!-- <meta name="repository" content="https://github.com/BenjaminAster/REPOSITORY" /> -->
-	<!-- <meta property="og:image" content="https://benjaminaster.com/NAME/assets/icon.png" /> -->
-
-	<!-- <link rel="icon" href="./assets/icon.png" type="image/png" sizes="512x512" /> -->
-	<!-- <link rel="icon" href="./assets/icon.svg" type="image/svg+xml" sizes="any" /> -->
-	<!-- <link rel="manifest" href="./app.webmanifest" /> -->
+	<meta name="robots" content="none" />
 
 	<title>CSS Properties</title>
 
-	<!-- <link rel="stylesheet" href="./main.css" /> -->
 	<link rel="preload" as="fetch" crossorigin href="https://drafts.csswg.org/indexes/" />
+	<link rel="preload" as="fetch" crossorigin href="/webindex/index/css.json" />
 
 	<script type="module">
 		let /** @type {string[]} */ browserProperties = [];
@@ -27,9 +18,14 @@
 		let /** @type {Set<string>} */ allProperties = new Set();
 
 		{
-			for (let property in document.body.style) {
-				if (typeof document.body.style[property] !== "string") continue;
-				property = property.replaceAll(/(?<capital>[A-Z])/g, "-$<capital>").replace(/^(?<vendorPrefix>webkit-|moz-|epub-)/, "-$<vendorPrefix>").toLowerCase();
+			const computedStyle = window.getComputedStyle(document.documentElement);
+			for (let property in computedStyle) {
+				if (
+					typeof computedStyle[property] !== "string" || /^[0-9]+$/.test(property) || property === "cssFloat"
+					||
+					(!computedStyle[property] && !["all", "webkitMask", "webkitTextStroke"].includes(property) /* https://crbug.com/1510955 */)
+				) continue;
+				property = property.replaceAll(/(?<capital>[A-Z])/g, "-$<capital>").replace(/^(?<vendorPrefix>webkit-|moz-|epub-)/i, "-$<vendorPrefix>").toLowerCase();
 				browserProperties.push(property);
 				allProperties.add(property);
 			}
@@ -49,6 +45,7 @@
 		{
 			const { cssProperties } = await(await window.fetch("/webindex/index/css.json")).json();
 			for (const { name } of cssProperties) {
+				if (name.startsWith("--")) continue;
 				webindexProperties.push(name);
 				allProperties.add(name);
 			}
@@ -69,16 +66,20 @@
 
 	<style>
 		:root {
+			color-scheme: dark light;
 			font-family: system-ui, sans-serif;
+			overflow-wrap: break-word;
 			-webkit-text-size-adjust: none;
 			text-size-adjust: none;
 		}
 
+		* {
+			background-clip: border-box;
+		}
+
 		body {
-			box-sizing: border-box;
-			min-block-size: 100vh;
-			min-block-size: 100dvb;
 			margin: 0;
+			box-sizing: border-box;
 			padding: .5rem;
 		}
 
@@ -86,9 +87,40 @@
 			border-collapse: collapse;
 		}
 
-		tr>td {
-			border: 1px solid currentColor;
+		thead {
+			background-color: #8883;
+		}
+
+		tbody {
+			counter-reset: table-row;
+		}
+
+		tbody > tr {
+			counter-increment: table-row;
+		}
+
+		tr > td {
+			border: 1px solid #8888;
 			padding: .3em .5em;
+			position: relative;
+		}
+
+		tr:nth-of-type(even) {
+			background-color: #8881;
+		}
+
+		tbody > tr > td:last-of-type::after {
+			content: counter(table-row);
+			position: absolute;
+			display: block;
+			inset-inline-end: 0;
+			inset-block: 0;
+			margin-block: auto;
+			translate: 100% 0;
+			padding-inline-start: .5em;
+			block-size: fit-content;
+			color: #888;
+			font-size: .8rem;
 		}
 	</style>
 </head>
@@ -102,8 +134,8 @@
 	<table id="properties">
 		<thead>
 			<tr>
-				<td>In the <a href="https://drafts.csswg.org/indexes/">CSSWG CSS index</a>:</td>
-				<td>In my <a href="/webindex/">Web Index</a>:</td>
+				<td>In the <a href="https://drafts.csswg.org/indexes/#properties">CSSWG CSS index</a>:</td>
+				<td>In my <a href="/webindex/css.html">Web Index</a>:</td>
 				<td>Your browser supports:</td>
 			</tr>
 		</thead>

@@ -6,7 +6,7 @@ deno run --allow-read --allow-write=. main.deno.ts
 */
 
 // @ts-ignore
-import { DOMParser as _DOMParser } from "https://deno.land/x/deno_dom@v0.1.38/deno-dom-wasm.ts";
+import { DOMParser as _DOMParser } from "https://deno.land/x/deno_dom@v0.1.43/deno-dom-wasm.ts";
 const DOMParser: typeof globalThis.DOMParser = _DOMParser;
 
 import features from "./features.ts";
