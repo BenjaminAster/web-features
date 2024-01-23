@@ -81,13 +81,15 @@ img {
 	box-sizing: border-box;
 	display: grid;
 	grid-template-rows: 0fr;
-	transition: grid-template-rows .2s;
+	visibility: hidden;
+	transition: grid-template-rows, visibility;
+	transition-duration: .2s;
+	transition-behavior: allow-discrete;
 }
 
 .info .details > .expansion > div {
 	box-sizing: border-box;
 	overflow: hidden;
-	/* padding-block-end: .6rem; */
 }
 
 .info .details > .expansion > div > :is(h1, h2, h3) {
@@ -99,7 +101,12 @@ img {
 }
 
 .info .details > input[type=checkbox]#info-details:checked ~ .expansion {
+	visibility: visible;
 	grid-template-rows: 1fr;
+}
+
+.horizontal-scroll {
+	overflow: auto;
 }
 
 table {

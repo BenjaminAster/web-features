@@ -2,10 +2,11 @@
 	"compilerOptions": {
 		"module": "ESNext",
 		"target": "ESNext",
-		"allowImportingTsExtensions": true,
-		"allowArbitraryExtensions": true,
+		"moduleResolution": "Bundler",
 		"noEmit": true,
-		"types": ["better-typescript", "deno-types"],
 		"strict": false,
+		"allowImportingTsExtensions": true,
+		"lib": ["ESNext"],
+		"types": ["@types/node"],
 	}
 }

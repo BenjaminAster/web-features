@@ -1,21 +1,17 @@
 
 /* 
-
-deno run --allow-read --allow-write=. main.deno.ts
-
+bun run main.ts
 */
 
-// @ts-ignore
-import { DOMParser as _DOMParser } from "https://deno.land/x/deno_dom@v0.1.43/deno-dom-wasm.ts";
-const DOMParser: typeof globalThis.DOMParser = _DOMParser;
+import { readFile, writeFile } from "node:fs/promises";
+import { DOMParser, type HTMLTemplateElement } from "@benjaminaster/unofficial-deno-dom-on-npm";
 
 import features from "./features.ts";
 
-const document = new DOMParser().parseFromString(await Deno.readTextFile("./template.html"), "text/html");
-document
+const document = new DOMParser().parseFromString(await readFile(await import.meta.resolve("./template.html"), { encoding: "utf-8" }), "text/html");
 
-const template = document.querySelector("template#item");
-const engineTemplate = document.querySelector("template#engine");
+const template = document.documentElement.querySelector("template#item") as HTMLTemplateElement;
+const engineTemplate = document.documentElement.querySelector("template#engine") as HTMLTemplateElement;
 
 for (const [category, featureList] of Object.entries(features)) {
 	for (const [feature, support, url] of featureList as any) {
@@ -32,4 +28,4 @@ for (const [category, featureList] of Object.entries(features)) {
 	}
 }
 
-await Deno.writeTextFile("./index.html", "<!DOCTYPE html>\n" + document.documentElement.outerHTML);
+await writeFile(await import.meta.resolve("./index.html"), "<!DOCTYPE html>\n" + document.documentElement.outerHTML, { encoding: "utf-8" });
