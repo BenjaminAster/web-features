@@ -8,7 +8,7 @@ import { DOMParser, type HTMLTemplateElement } from "@benjaminaster/unofficial-d
 
 import features from "./features.ts";
 
-const document = new DOMParser().parseFromString(await readFile(await import.meta.resolve("./template.html"), { encoding: "utf-8" }), "text/html");
+const document = new DOMParser().parseFromString(await readFile(new URL("./template.html", import.meta.url), { encoding: "utf-8" }), "text/html");
 
 const template = document.documentElement.querySelector("template#item") as HTMLTemplateElement;
 const engineTemplate = document.documentElement.querySelector("template#engine") as HTMLTemplateElement;
@@ -28,4 +28,4 @@ for (const [category, featureList] of Object.entries(features)) {
 	}
 }
 
-await writeFile(await import.meta.resolve("./index.html"), "<!DOCTYPE html>\n" + document.documentElement.outerHTML, { encoding: "utf-8" });
+await writeFile(new URL("./index.html", import.meta.url), "<!DOCTYPE html>\n" + document.documentElement.outerHTML, { encoding: "utf-8" });

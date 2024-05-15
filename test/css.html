@@ -62,6 +62,8 @@
 				tbody.append(clone);
 			}
 		}
+
+		console.log(webindexProperties.filter(p => (browserProperties.includes(`-webkit-${p}`) || browserProperties.includes(`-moz-${p}`)) && !browserProperties.includes(p)))
 	</script>
 
 	<style>
@@ -95,11 +97,11 @@
 			counter-reset: table-row;
 		}
 
-		tbody > tr {
+		tbody>tr {
 			counter-increment: table-row;
 		}
 
-		tr > td {
+		tr>td {
 			border: 1px solid #8888;
 			padding: .3em .5em;
 			position: relative;
@@ -109,7 +111,7 @@
 			background-color: #8881;
 		}
 
-		tbody > tr > td:last-of-type::after {
+		tbody>tr>td:last-of-type::after {
 			content: counter(table-row);
 			position: absolute;
 			display: block;
