@@ -4,7 +4,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="robots" content="all">
 	<meta name="description" content="An overview of (mostly new) web features that are not yet fully supported in all three browser engines.">
-	<meta name="repository" content="https://github.com/BenjaminAster/web-features">
+	<link rel="code-repository" href="https://github.com/BenjaminAster/web-features">
 
 	<title>Web features</title>
 
@@ -295,6 +295,8 @@
 			<a href="https://html.spec.whatwg.org/multipage/interaction.html#writing-suggestions" class="name">writingsuggestions attribute</a>
 			<div class="engines">
 		<div class="engine blink experimental" title="Supported in Blink (experimental)"></div>
+	
+		<div class="engine webkit experimental" title="Supported in WebKit (experimental)"></div>
 	</div>
 		</li>
 	
@@ -311,6 +313,8 @@
 			<a href="https://html.spec.whatwg.org/#attr-template-shadowrootdelegatesfocus" class="name">shadowrootdelegatesfocus attribute</a>
 			<div class="engines">
 		<div class="engine blink" title="Supported in Blink"></div>
+	
+		<div class="engine webkit experimental" title="Supported in WebKit (experimental)"></div>
 	</div>
 		</li>
 	
@@ -552,6 +556,27 @@
 		</li>
 	
 		<li>
+			<a href="https://drafts.csswg.org/css-view-transitions-2/#view-transition-rule" class="name">@view-transition</a>
+			<div class="engines">
+		<div class="engine blink" title="Supported in Blink"></div>
+	</div>
+		</li>
+	
+		<li>
+			<a href="https://drafts.csswg.org/css-view-transitions-2/#pseudo-classes-for-selective-vt" class="name">:active-view-transition(-type())</a>
+			<div class="engines">
+		<div class="engine blink" title="Supported in Blink"></div>
+	</div>
+		</li>
+	
+		<li>
+			<a href="https://drafts.csswg.org/css-view-transitions-2/#view-transition-class-prop" class="name">view-transition-class</a>
+			<div class="engines">
+		<div class="engine blink" title="Supported in Blink"></div>
+	</div>
+		</li>
+	
+		<li>
 			<a href="https://drafts.css-houdini.org/css-properties-values-api-1/#at-property-rule" class="name">@property</a>
 			<div class="engines">
 		<div class="engine blink" title="Supported in Blink"></div>
@@ -692,17 +717,6 @@
 		</li>
 	
 		<li>
-			<a href="https://drafts.csswg.org/css-values-4/#round-func" class="name">stepped value functions (round(), mod(), rem())</a>
-			<div class="engines">
-		<div class="engine blink" title="Supported in Blink"></div>
-	
-		<div class="engine webkit" title="Supported in WebKit"></div>
-	
-		<div class="engine gecko" title="Supported in Gecko"></div>
-	</div>
-		</li>
-	
-		<li>
 			<a href="https://drafts.csswg.org/css-values-4/#sign-funcs" class="name">sign-related functions (abs(), sign())</a>
 			<div class="engines">
 		<div class="engine blink experimental" title="Supported in Blink (experimental)"></div>
@@ -748,6 +762,8 @@
 			<div class="engines">
 		<div class="engine blink" title="Supported in Blink"></div>
 	
+		<div class="engine webkit experimental" title="Supported in WebKit (experimental)"></div>
+	
 		<div class="engine gecko" title="Supported in Gecko"></div>
 	</div>
 		</li>
@@ -755,7 +771,9 @@
 		<li>
 			<a href="https://drafts.csswg.org/css-text-3/#text-indent-property" class="name">text-indent: {hanging, each-line}</a>
 			<div class="engines">
-		<div class="engine webkit experimental" title="Supported in WebKit (experimental)"></div>
+		<div class="engine webkit" title="Supported in WebKit"></div>
+	
+		<div class="engine gecko" title="Supported in Gecko"></div>
 	</div>
 		</li>
 	
@@ -974,6 +992,8 @@
 		<div class="engine blink" title="Supported in Blink"></div>
 	
 		<div class="engine webkit" title="Supported in WebKit"></div>
+	
+		<div class="engine gecko experimental" title="Supported in Gecko (experimental)"></div>
 	</div>
 		</li>
 	
@@ -1273,15 +1293,6 @@
 		</li>
 	
 		<li>
-			<a href="https://github.com/WICG/sanitizer-api/blob/main/explainer.md" class="name">Sanitizer</a>
-			<div class="engines">
-		<div class="engine blink experimental" title="Supported in Blink (experimental)"></div>
-	
-		<div class="engine gecko experimental" title="Supported in Gecko (experimental)"></div>
-	</div>
-		</li>
-	
-		<li>
 			<a href="https://urlpattern.spec.whatwg.org/" class="name">URLPattern</a>
 			<div class="engines">
 		<div class="engine blink" title="Supported in Blink"></div>
@@ -1416,28 +1427,6 @@
 		</li>
 	
 		<li>
-			<a href="https://w3c.github.io/clipboard-apis/#dom-clipboard-read" class="name">clipboard read</a>
-			<div class="engines">
-		<div class="engine blink" title="Supported in Blink"></div>
-	
-		<div class="engine webkit" title="Supported in WebKit"></div>
-	
-		<div class="engine gecko experimental" title="Supported in Gecko (experimental)"></div>
-	</div>
-		</li>
-	
-		<li>
-			<a href="https://w3c.github.io/clipboard-apis/#dom-clipboard-write" class="name">clipboard write()</a>
-			<div class="engines">
-		<div class="engine blink" title="Supported in Blink"></div>
-	
-		<div class="engine webkit" title="Supported in WebKit"></div>
-	
-		<div class="engine gecko experimental" title="Supported in Gecko (experimental)"></div>
-	</div>
-		</li>
-	
-		<li>
 			<a href="https://w3c.github.io/requestidlecallback/#the-requestidlecallback-method" class="name">requestIdleCallback</a>
 			<div class="engines">
 		<div class="engine blink" title="Supported in Blink"></div>
@@ -1539,6 +1528,8 @@
 			<a href="https://wicg.github.io/scroll-to-text-fragment/#feature-detectability" class="name">document.fragmentDirective</a>
 			<div class="engines">
 		<div class="engine blink" title="Supported in Blink"></div>
+	
+		<div class="engine webkit experimental" title="Supported in WebKit (experimental)"></div>
 	</div>
 		</li>
 	
@@ -1592,8 +1583,6 @@
 			<a href="https://w3c.github.io/vibration/" class="name">navigator.vibrate()</a>
 			<div class="engines">
 		<div class="engine blink" title="Supported in Blink"></div>
-	
-		<div class="engine gecko" title="Supported in Gecko"></div>
 	</div>
 		</li>
 	
@@ -1768,6 +1757,8 @@
 			<div class="engines">
 		<div class="engine blink experimental" title="Supported in Blink (experimental)"></div>
 	
+		<div class="engine webkit experimental" title="Supported in WebKit (experimental)"></div>
+	
 		<div class="engine gecko" title="Supported in Gecko"></div>
 	</div>
 		</li>
@@ -1784,6 +1775,11 @@
 			<div class="engines">
 		<div class="engine gecko" title="Supported in Gecko"></div>
 	</div>
+		</li>
+	
+		<li>
+			<a href="https://wicg.github.io/sanitizer-api/" class="name">Sanitizer</a>
+			<div class="engines"></div>
 		</li>
 	
 		<li>
@@ -1866,17 +1862,6 @@
 	
 		<li>
 			<a href="https://tc39.es/ecma262/multipage/structured-data.html#sec-arraybuffer.prototype.resize" class="name">resizable (Shared)ArrayBuffer</a>
-			<div class="engines">
-		<div class="engine blink" title="Supported in Blink"></div>
-	
-		<div class="engine webkit" title="Supported in WebKit"></div>
-	
-		<div class="engine gecko experimental" title="Supported in Gecko (experimental)"></div>
-	</div>
-		</li>
-	
-		<li>
-			<a href="https://tc39.es/proposal-set-methods/" class="name">Set methods</a>
 			<div class="engines">
 		<div class="engine blink" title="Supported in Blink"></div>
 	
