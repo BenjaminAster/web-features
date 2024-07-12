@@ -322,6 +322,10 @@
 			<a href="https://whatpr.org/html/10139/scripting.html#attr-template-shadowrootserializable" class="name">shadowrootserializable attribute</a>
 			<div class="engines">
 		<div class="engine blink experimental" title="Supported in Blink (experimental)"></div>
+	
+		<div class="engine webkit experimental" title="Supported in WebKit (experimental)"></div>
+	
+		<div class="engine gecko" title="Supported in Gecko"></div>
 	</div>
 		</li>
 	</ul>
@@ -563,7 +567,16 @@
 		</li>
 	
 		<li>
-			<a href="https://drafts.csswg.org/css-view-transitions-2/#pseudo-classes-for-selective-vt" class="name">:active-view-transition(-type())</a>
+			<a href="https://drafts.csswg.org/css-view-transitions-2/#pseudo-classes-for-selective-vt" class="name">:active-view-transition</a>
+			<div class="engines">
+		<div class="engine blink" title="Supported in Blink"></div>
+	
+		<div class="engine webkit experimental" title="Supported in WebKit (experimental)"></div>
+	</div>
+		</li>
+	
+		<li>
+			<a href="https://drafts.csswg.org/css-view-transitions-2/#pseudo-classes-for-selective-vt" class="name">:active-view-transition-type()</a>
 			<div class="engines">
 		<div class="engine blink" title="Supported in Blink"></div>
 	</div>
@@ -577,17 +590,6 @@
 		</li>
 	
 		<li>
-			<a href="https://drafts.css-houdini.org/css-properties-values-api-1/#at-property-rule" class="name">@property</a>
-			<div class="engines">
-		<div class="engine blink" title="Supported in Blink"></div>
-	
-		<div class="engine webkit" title="Supported in WebKit"></div>
-	
-		<div class="engine gecko experimental" title="Supported in Gecko (experimental)"></div>
-	</div>
-		</li>
-	
-		<li>
 			<a href="https://drafts.fxtf.org/filter-effects-1/#FilterCSSImageValue" class="name">filter()</a>
 			<div class="engines">
 		<div class="engine webkit" title="Supported in WebKit"></div>
@@ -595,11 +597,11 @@
 		</li>
 	
 		<li>
-			<a href="https://drafts.csswg.org/css-color-5/#relative-colors" class="name">relative color syntax</a>
+			<a href="https://drafts.csswg.org/css-color-5/#relative-colors" class="name">currentColor in relative color syntax</a>
 			<div class="engines">
-		<div class="engine blink" title="Supported in Blink"></div>
+		<div class="engine webkit experimental" title="Supported in WebKit (experimental)"></div>
 	
-		<div class="engine webkit" title="Supported in WebKit"></div>
+		<div class="engine gecko experimental" title="Supported in Gecko (experimental)"></div>
 	</div>
 		</li>
 	
@@ -609,6 +611,8 @@
 		<div class="engine blink" title="Supported in Blink"></div>
 	
 		<div class="engine webkit" title="Supported in WebKit"></div>
+	
+		<div class="engine gecko experimental" title="Supported in Gecko (experimental)"></div>
 	</div>
 		</li>
 	
@@ -987,17 +991,6 @@
 		</li>
 	
 		<li>
-			<a href="https://drafts.csswg.org/css-content-3/#valdef-content---string--counter--attr" class="name">content: alternative text after `/`</a>
-			<div class="engines">
-		<div class="engine blink" title="Supported in Blink"></div>
-	
-		<div class="engine webkit" title="Supported in WebKit"></div>
-	
-		<div class="engine gecko experimental" title="Supported in Gecko (experimental)"></div>
-	</div>
-		</li>
-	
-		<li>
 			<a href="https://drafts.csswg.org/css-line-grid-1/#line-grid-property" class="name">line-grid</a>
 			<div class="engines"></div>
 		</li>
@@ -1063,7 +1056,7 @@
 		</li>
 	
 		<li>
-			<a href="https://drafts.csswg.org/css-scroll-snap-2/#scroll-start" class="name">scroll-start</a>
+			<a href="https://drafts.csswg.org/css-scroll-snap-2/#scroll-start-target" class="name">scroll-start-target</a>
 			<div class="engines"></div>
 		</li>
 	
@@ -1223,17 +1216,6 @@
 		<div class="engine blink" title="Supported in Blink"></div>
 	
 		<div class="engine webkit" title="Supported in WebKit"></div>
-	</div>
-		</li>
-	
-		<li>
-			<a href="https://drafts.css-houdini.org/css-properties-values-api-1/#registering-custom-properties" class="name">CSS.registerProperty()</a>
-			<div class="engines">
-		<div class="engine blink" title="Supported in Blink"></div>
-	
-		<div class="engine webkit" title="Supported in WebKit"></div>
-	
-		<div class="engine gecko experimental" title="Supported in Gecko (experimental)"></div>
 	</div>
 		</li>
 	
@@ -1778,6 +1760,20 @@
 		</li>
 	
 		<li>
+			<a href="https://fetch.spec.whatwg.org/#dom-body-bytes" class="name">{Request, Response}.prototype.bytes()</a>
+			<div class="engines">
+		<div class="engine gecko" title="Supported in Gecko"></div>
+	</div>
+		</li>
+	
+		<li>
+			<a href="https://w3c.github.io/FileAPI/#dom-blob-bytes" class="name">Blob.prototype.bytes()</a>
+			<div class="engines">
+		<div class="engine gecko" title="Supported in Gecko"></div>
+	</div>
+		</li>
+	
+		<li>
 			<a href="https://wicg.github.io/sanitizer-api/" class="name">Sanitizer</a>
 			<div class="engines"></div>
 		</li>
@@ -1857,17 +1853,6 @@
 		<div class="engine blink" title="Supported in Blink"></div>
 	
 		<div class="engine webkit" title="Supported in WebKit"></div>
-	</div>
-		</li>
-	
-		<li>
-			<a href="https://tc39.es/ecma262/multipage/structured-data.html#sec-arraybuffer.prototype.resize" class="name">resizable (Shared)ArrayBuffer</a>
-			<div class="engines">
-		<div class="engine blink" title="Supported in Blink"></div>
-	
-		<div class="engine webkit" title="Supported in WebKit"></div>
-	
-		<div class="engine gecko experimental" title="Supported in Gecko (experimental)"></div>
 	</div>
 		</li>
 	
