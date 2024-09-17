@@ -8,7 +8,8 @@
 	text-size-adjust: none;
 	-webkit-tap-highlight-color: transparent;
 
-	scrollbar-color: #8886 transparent;
+	scrollbar-color: light-dark(#ccc, #333) transparent;
+	scrollbar-width: thin;
 
 	--sqrt-2: sqrt(2);
 }
@@ -216,15 +217,15 @@ table img.engine {
 }
 
 .engines > .engine.blink {
-	--image: url("./assets/blink.svg");
+	--image: url("../assets/blink.svg");
 }
 
 .engines > .engine.webkit {
-	--image: url("./assets/webkit.svg");
+	--image: url("../assets/webkit.svg");
 }
 
 .engines > .engine.gecko {
-	--image: url("./assets/gecko.svg");
+	--image: url("../assets/gecko.svg");
 }
 
 .engines > .engine.experimental {

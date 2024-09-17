@@ -1,12 +1,4 @@
 {
-	"compilerOptions": {
-		"module": "ESNext",
-		"target": "ESNext",
-		"moduleResolution": "Bundler",
-		"noEmit": true,
-		"strict": false,
-		"allowImportingTsExtensions": true,
-		"lib": ["ESNext"],
-		"types": ["@types/node"],
-	}
+	"extends": ["winzig-types/tsconfig/tsconfig.base.json"],
+	"exclude": ["./appfiles/"],
 }

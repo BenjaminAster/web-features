@@ -1,15 +1,12 @@
 
-/* 
-bun run main.ts
-*/
-
 const experimental = "experimental";
 const prefixed = "prefixed";
 const limitedSupport = "limited-support";
 
-const blink = (...labels: string[]) => ({ engine: "blink", engineName: "Blink", labels });
-const webkit = (...labels: string[]) => ({ engine: "webkit", engineName: "WebKit", labels });
-const gecko = (...labels: string[]) => ({ engine: "gecko", engineName: "Gecko", labels });
+type EngineInfo = { engine: string, engineName: string, labels: string[]; };
+const blink = (...labels: string[]): EngineInfo => ({ engine: "blink", engineName: "Blink", labels });
+const webkit = (...labels: string[]): EngineInfo => ({ engine: "webkit", engineName: "WebKit", labels });
+const gecko = (...labels: string[]): EngineInfo => ({ engine: "gecko", engineName: "Gecko", labels });
 
 export default {
 	html: [
@@ -37,7 +34,6 @@ export default {
 		["shadowrootserializable attribute", [blink(experimental), webkit(experimental), gecko()], "https://whatpr.org/html/10139/scripting.html#attr-template-shadowrootserializable"],
 	],
 	css: [
-		["backdrop-filter", [blink(), webkit(prefixed), gecko()], "https://drafts.fxtf.org/filter-effects-2/#BackdropFilterProperty"],
 		["mask-border", [blink(prefixed), webkit()], "https://drafts.fxtf.org/css-masking-1/#mask-borders"],
 		["print-color-adjust", [blink(prefixed), webkit(), gecko()], "https://drafts.csswg.org/css-color-adjust-1/#print-color-adjust"],
 		["user-select", [blink(), webkit(prefixed), gecko()], "https://drafts.csswg.org/css-ui-4/#content-selection"],
@@ -74,10 +70,9 @@ export default {
 		["gradient color spaces", [blink(), webkit(), gecko(experimental)], "https://drafts.csswg.org/css-images-4/#gradients"],
 		["overflow-{block, inline}", [gecko()], "https://drafts.csswg.org/css-overflow-3/#logical"],
 		["overflow-clip-margin", [blink(), gecko()], "https://drafts.csswg.org/css-overflow-3/#overflow-clip-margin"],
-		["@container style()", [blink(), webkit(experimental)], "https://drafts.csswg.org/css-contain-3/#typedef-query-in-parens"],
+		["@container style()", [blink(), webkit()], "https://drafts.csswg.org/css-contain-3/#typedef-query-in-parens"],
 		["scroll progress timelines", [blink(experimental)], "https://drafts.csswg.org/scroll-animations-1/#scroll-timelines"],
 		["view progress timelines", [blink(), gecko(experimental)], "https://drafts.csswg.org/scroll-animations-1/#view-timelines"],
-		["content-visibility", [blink(), webkit(experimental), gecko()], "https://drafts.csswg.org/css-contain-2/#content-visibility"],
 		["hanging-punctuation", [webkit()], "https://drafts.csswg.org/css-text-3/#hanging-punctuation-property"],
 		["sign-related functions (abs(), sign())", [blink(experimental), webkit(), gecko()], "https://drafts.csswg.org/css-values-4/#sign-funcs"],
 		["clip-path: external SVGs", [gecko()], "https://drafts.fxtf.org/css-masking-1/#the-clip-path"],
@@ -111,6 +106,8 @@ export default {
 		["text-wrap-style", [webkit(), gecko()], "https://drafts.csswg.org/css-text-4/#text-wrap-style"],
 		["text-wrap: pretty", [blink()], "https://drafts.csswg.org/css-text-4/#valdef-text-wrap-style-pretty"],
 		["text-wrap: stable", [gecko(), webkit(experimental)], "https://drafts.csswg.org/css-text-4/#valdef-text-wrap-style-stable"],
+		["interpolate-size", [blink()], "https://drafts.csswg.org/css-values-5/#interpolate-size"],
+		["calc-size()", [blink()], "https://drafts.csswg.org/css-values-5/#calc-size"],
 		["line-grid", [], "https://drafts.csswg.org/css-line-grid-1/#line-grid-property"],
 		["@page margin boxes", [], "https://drafts.csswg.org/css-page-3/#margin-boxes"],
 		["page-based counters", [], "https://drafts.csswg.org/css-page-3/#page-based-counters"],
@@ -204,7 +201,7 @@ export default {
 		["compute pressure", [blink()], "https://w3c.github.io/compute-pressure/"],
 		["contact picker", [blink(limitedSupport)], "https://w3c.github.io/contact-picker/"],
 		["Content Index", [blink(limitedSupport)], "https://wicg.github.io/content-index/spec/"],
-		["WebCodecs: video", [blink(), webkit()], "https://w3c.github.io/webcodecs/"],
+		["WebCodecs: video", [blink(), webkit(), gecko(limitedSupport)], "https://w3c.github.io/webcodecs/"],
 		["WebCodecs: audio", [blink()], "https://w3c.github.io/webcodecs/"],
 		["CookieStore", [blink()], "https://wicg.github.io/cookie-store/"],
 		["battery status", [blink()], "https://w3c.github.io/battery/"],
@@ -219,7 +216,6 @@ export default {
 		["Observable", [blink(experimental)], "https://wicg.github.io/observable/"],
 		["custom element disabledFeatures", [blink(), gecko()], "https://html.spec.whatwg.org/multipage/custom-elements.html#custom-elements-api:js-get-4"],
 		["pagereveal event", [blink()], "https://html.spec.whatwg.org/multipage/nav-history-apis.html#the-pagerevealevent-interface"],
-		["URL.parse()", [blink(experimental), webkit(experimental), gecko()], "https://url.spec.whatwg.org/#dom-url-parse"],
 		["service worker: InstallEvent.prototype.addRoutes()", [blink()], "https://w3c.github.io/ServiceWorker/#register-router-method"],
 		["Element.prototype.currentCSSZoom", [gecko()], "https://drafts.csswg.org/cssom-view-1/#dom-element-currentcsszoom"],
 		["{Request, Response}.prototype.bytes()", [gecko()], "https://fetch.spec.whatwg.org/#dom-body-bytes"],
@@ -244,7 +240,7 @@ export default {
 		["import attributes", [blink(), webkit()], "https://tc39.es/proposal-import-attributes/"],
 		["Temporal", [webkit(experimental)], "https://tc39.es/proposal-temporal/"],
 		["iterator helpers", [blink()], "https://tc39.es/proposal-iterator-helpers/"],
-		["Intl.DurationFormat", [blink(experimental), webkit()], "https://tc39.es/proposal-intl-duration-format/"],
+		["Intl.DurationFormat", [blink(), webkit()], "https://tc39.es/proposal-intl-duration-format/"],
 		["Promise.try()", [blink()], "https://tc39.es/proposal-promise-try/"],
 		["type annotations", [], "https://tc39.es/proposal-type-annotations/"],
 		["decorators", [], "https://tc39.es/proposal-decorators/"],
@@ -262,4 +258,4 @@ export default {
 		["type reflection", [blink(experimental), gecko(experimental)], "https://github.com/WebAssembly/js-types/blob/main/proposals/js-types/Overview.md"],
 		["WebAssembly.Memory.prototype.toResizableBuffer()", [], "https://webassembly.github.io/spec/js-api/index.html#ref-for-dom-memory-toresizablebuffer"],
 	],
-};
+} as Record<string, [string, EngineInfo[], string][]>;
